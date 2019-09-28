@@ -23,7 +23,10 @@ public:
 		}
 	}
 
-	auto& operator[](std::uint32_t index){ //TODO: add const []
+	auto& operator[](std::uint32_t index){
+		return mat[index];
+	}
+	const auto& operator[](std::uint32_t index) const{
 		return mat[index];
 	}
 };
@@ -34,7 +37,7 @@ struct min{
 };
 
 template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
-constexpr auto operator*(Matrix<aR, aC, T>& lhs, Matrix<bR, bC, T>& rhs){
+constexpr auto operator*(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs){
 	constexpr auto minLen = min<aR, aC>::value;
 	Matrix<minLen, minLen, T> result;
 
@@ -47,6 +50,3 @@ constexpr auto operator*(Matrix<aR, aC, T>& lhs, Matrix<bR, bC, T>& rhs){
 	}
 	return result;
 }
-
-
-//TODO: I think the row / colum needs adjusting because for a 2x3 it's row[
