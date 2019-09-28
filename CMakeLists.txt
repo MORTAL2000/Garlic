@@ -58,6 +58,7 @@ set(SPDLOG_BUILD_EXAMPLES OFF CACHE BOOL "Build examples")
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(EngineFolder "Clove")
 set(DependencyFolder "Clove/Dependencies")
+set(ModuleFolder "Clove/Modules")
 
 #-dxerr
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
@@ -93,6 +94,10 @@ set_target_properties(sndfile PROPERTIES FOLDER ${DependencyFolder})
 #-freetype2
 add_subdirectory(Clove/vendor/freetype2)
 set_target_properties(freetype PROPERTIES FOLDER ${DependencyFolder})
+
+#Clove modules
+add_subdirectory(Clove/modules/maths)
+set_target_properties(Maths PROPERTIES FOLDER ${ModuleFolder})
 
 #Clove
 add_subdirectory(Clove)

@@ -304,6 +304,8 @@ target_link_libraries(
 		sndfile
 		portaudio_static
 		freetype
+		#Custom maths library: TODO - remove glm
+		Maths
 		#Windows
 		$<$<PLATFORM_ID:Windows>:dxerr>
 		$<$<PLATFORM_ID:Windows>:opengl32>
