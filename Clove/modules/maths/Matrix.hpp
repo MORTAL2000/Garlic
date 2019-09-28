@@ -15,7 +15,13 @@ private:
 
 	//FUNCTIONS
 public:
-	
+	Matrix(){
+		for(auto&& outer : mat){
+			for(auto&& inner : outer){
+				inner = 0;
+			}
+		}
+	}
 
 	auto& operator[](std::uint32_t index){ //TODO: add const []
 		return mat[index];
@@ -34,12 +40,11 @@ constexpr auto operator*(Matrix<aR, aC, T>& lhs, Matrix<bR, bC, T>& rhs){
 
 	for(std::size_t row = 0; row < minLen; ++row){
 		for(std::size_t col = 0; col < minLen; ++col){
-			for(std::size_t i = 0,  j = 0; i < aC && j < bR; ++i, ++j){
+			for(std::size_t i = 0, j = 0; i < aC && j < bR; ++i, ++j){
 				result[row][col] += lhs[row][i] * rhs[j][col];
 			}
 		}
 	}
-
 	return result;
 }
 
