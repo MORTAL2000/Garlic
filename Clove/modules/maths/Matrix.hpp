@@ -31,14 +31,11 @@ public:
 	}
 };
 
-template<std::uint32_t a, std::uint32_t b>
-struct min{
-	constexpr static std::uint32_t value = a < b ? a : b;
-};
+//TODO: enable if inside and outside dimensions are the same
 
 template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
 constexpr auto operator*(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs){
-	constexpr auto minLen = min<aR, aC>::value;
+	constexpr auto minLen = std::min(aR, aC);
 	Matrix<minLen, minLen, T> result;
 
 	for(std::size_t row = 0; row < minLen; ++row){
