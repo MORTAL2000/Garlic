@@ -2,11 +2,12 @@
 
 #include <cinttypes>
 #include <array>
+#include <type_traits>
 
 //TODO: Wrap in namespace
 //TODO: inl
 
-template<std::uint32_t R, std::uint32_t C, typename T>
+template<std::uint32_t R, std::uint32_t C, typename T, std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
 struct Matrix{
 	//VARIABLES
 private:
@@ -22,31 +23,16 @@ public:
 };
 
 template<std::uint32_t R, std::uint32_t C, typename T>
-Matrix<R, C, T> operator*(const Matrix<R, C, T>& lhs, const Matrix<R, C, T>& rhs){
-	//loop through lhs row and mult by rhs col
-	
+constexpr Matrix<R, C, T> operator*(const Matrix<R, C, T>& lhs, const Matrix<R, C, T>& rhs){
 	Matrix<R, C, T> result;
 
-	for(size_t row = 0; row < R; ++row){
-		for(size_t col = 0; col < C; ++col){
-			//result[0][0] = lhs[i][j] * rhs[j][i];
-
-			//imagine 2 x 2 
-
-			result[0][0] = lhs[0][0] * rhs[0][0] + lhs[1][0] * rhs[0][1];
-			result[1][0] = lhs[0][0] * rhs[1][0] + lhs[1][0] * rhs[1][1];
-			result[0][1] = lhs[0][1] * rhs[0][0] + lhs[1][1] * rhs[0][1];
-			result[1][1] = lhs[0][1] * rhs[1][0] + lhs[1][1] * rhs[1][1];
+	for(std::size_t row = 0; row < R; ++row){
+		for(std::size_t col = 0; col < C; ++col){
+			for(std::size_t i = 0, std::size_t j = 0; i < C && j < R; ++i, ++j){
+				result[row][col] += lhs[row][i] * rhs[j][col];
+			}
 		}
 	}
 
 	return result;
 }
-
-/*
- 1  2     2  3
- 3  4  x  4  5
-
- 1 * 2 + 2 * 4  1 * 3 + 2 * 5
- 3 * 2 + 4 * 4  3 * 3 + 4 * 5
- */
