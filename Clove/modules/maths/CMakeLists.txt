@@ -5,6 +5,8 @@ add_library(
 	STATIC
 		Matrix.hpp
 		Matrix.inl
+		Vector.hpp
+		Vector.inl
 		Temp.cpp #Required because of no cpp files and need to generate the .lib
 )
 
