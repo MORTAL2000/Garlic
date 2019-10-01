@@ -7,8 +7,10 @@
 //TODO: Wrap in namespace
 //TODO: inl
 
-template<std::uint32_t R, std::uint32_t C, typename T, std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
+template<std::uint32_t R, std::uint32_t C, typename T>
 struct Matrix{
+	static_assert(std::is_arithmetic_v<T>, "Type is not arithmetic!");
+
 	//VARIABLES
 private:
 	std::array<std::array<T, C>, R> mat;
