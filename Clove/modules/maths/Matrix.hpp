@@ -18,11 +18,11 @@ private:
 	//FUNCTIONS
 public:
 	Matrix(){
-		for(auto&& outer : mat){
-			for(auto&& inner : outer){
-				inner = 0;
-			}
-		}
+		std::for_each(mat.begin(), mat.end(), [](auto& innerArray){
+			std::for_each(innerArray.begin(), innerArray.end(), [](T& value){
+				value = 0;
+			});
+		});
 	}
 
 	auto& operator[](std::uint32_t index){
