@@ -33,6 +33,18 @@ namespace clv::mth{
 		}
 	};
 
+	using Matrix2i = Matrix<2, 2, std::int32_t>;
+	using Matrix3i = Matrix<3, 3, std::int32_t>;
+	using Matrix4i = Matrix<4, 4, std::int32_t>;
+
+	using Matrix2f = Matrix<2, 2, float>;
+	using Matrix3f = Matrix<3, 3, float>;
+	using Matrix4f = Matrix<4, 4, float>;
+
+	using Matrix2d = Matrix<2, 2, double>;
+	using Matrix3d = Matrix<3, 3, double>;
+	using Matrix4d = Matrix<4, 4, double>;
+
 	template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
 	constexpr Matrix<aR, bC, T> operator*(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs){
 		static_assert(aC == bR, "Inner values must be the same");
