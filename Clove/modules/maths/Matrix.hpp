@@ -61,4 +61,34 @@ namespace clv::mth{
 
 		return result;
 	}
+
+	template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
+	constexpr Matrix<aR, aC, T> operator+(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs){
+		static_assert(aR == bR && aC == bC, "Matrices must be the same size");
+
+		Matrix<aR, aC, T> result;
+
+		for(std::size_t row = 0; row < aR; ++row){
+			for(std::size_t col = 0; col < aC; ++col){
+				result[row][col] = lhs[row][col] + rhs[row][col];
+			}
+		}
+
+		return result;
+	}
+
+	template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
+	constexpr Matrix<aR, aC, T> operator-(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs){
+		static_assert(aR == bR && aC == bC, "Matrices must be the same size");
+
+		Matrix<aR, aC, T> result;
+
+		for(std::size_t row = 0; row < aR; ++row){
+			for(std::size_t col = 0; col < aC; ++col){
+				result[row][col] = lhs[row][col] - rhs[row][col];
+			}
+		}
+
+		return result;
+	}
 }
