@@ -33,16 +33,9 @@ public:
 	}
 };
 
-
-//TODO: Put in some sort of global header
-template<std::uint32_t a, std::uint32_t b>
-struct sameValue{
-	static constexpr bool value = (a == b);
-};
-
 template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
 constexpr Matrix<aR, bC, T> operator*(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs){
-	static_assert(sameValue<aC, bR>::value, "Inner values must be the same");
+	static_assert(aC == bR, "Inner values must be the same");
 
 	Matrix<aR, bC, T> result;
 
