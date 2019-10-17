@@ -19,10 +19,8 @@ namespace clv::mth{
 
 		//FUNCTIONS
 	public:
-		Vector(){
-			x = 0;
-			y = 0;
-		}
+		Vector() : x(0), y(0){}
+		Vector(T x, T y) : x(x), y(y){}
 	};
 
 	template<typename T>
@@ -35,11 +33,8 @@ namespace clv::mth{
 
 		//FUNCTIONS
 	public:
-		Vector(){
-			x = 0;
-			y = 0;
-			z = 0;
-		}
+		Vector() : x(0), y(0), z(0){}
+		Vector(T x, T y, T z) : x(x), y(y), z(z){}
 	};
 
 	template<typename T>
@@ -53,12 +48,8 @@ namespace clv::mth{
 
 		//FUNCTIONS
 	public:
-		Vector(){
-			x = 0;
-			y = 0;
-			z = 0;
-			w = 0;
-		}
+		Vector() : x(0), y(0), z(0), w(0){}
+		Vector(T x, T y, T z, T w) : x(x), y(y), z(z), w(w){}
 	};
 
 	using Vector2i = Vector<2, std::int32_t>;
