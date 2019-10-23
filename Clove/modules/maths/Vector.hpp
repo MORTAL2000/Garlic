@@ -20,7 +20,14 @@ namespace clv::mth{
 		//FUNCTIONS
 	public:
 		Vector() : x(0), y(0){}
-		Vector(T x, T y) : x(x), y(y){}
+		Vector(T a, T b) : x(a), y(b){}
+
+		constexpr T& operator[](std::uint8_t index) noexcept{
+			return *reinterpret_cast<T*>(&x + index);
+		}
+		constexpr const T& operator[](std::uint8_t index) const noexcept{
+			return *reinterpret_cast<T*>(&x + index);
+		}
 	};
 
 	template<typename T>
@@ -35,6 +42,13 @@ namespace clv::mth{
 	public:
 		Vector() : x(0), y(0), z(0){}
 		Vector(T x, T y, T z) : x(x), y(y), z(z){}
+
+		constexpr T& operator[](std::uint8_t index) noexcept{
+			return *reinterpret_cast<T*>(&x + index);
+		}
+		constexpr const T& operator[](std::uint8_t index) const noexcept{
+			return *reinterpret_cast<T*>(&x + index);
+		}
 	};
 
 	template<typename T>
@@ -50,6 +64,13 @@ namespace clv::mth{
 	public:
 		Vector() : x(0), y(0), z(0), w(0){}
 		Vector(T x, T y, T z, T w) : x(x), y(y), z(z), w(w){}
+
+		constexpr T& operator[](std::uint8_t index) noexcept{
+			return *reinterpret_cast<T*>(&x + index);
+		}
+		constexpr const T& operator[](std::uint8_t index) const noexcept{
+			return *reinterpret_cast<T*>(&x + index);
+		}
 	};
 
 	using Vector2i = Vector<2, std::int32_t>;
@@ -63,4 +84,14 @@ namespace clv::mth{
 	using Vector2d = Vector<2, double>;
 	using Vector3d = Vector<3, double>;
 	using Vector4d = Vector<4, double>;
+
+	//TODO: operator isn't picked up
+	template<std::uint32_t L, typename T, typename U, typename V>
+	constexpr Vector<L, V> operator+(const Vector<L, T>& lhs, const Vector<L, U>& rhs){
+		Vector<L, V> result;
+		for(std::uint32_t i = 0; i < L; ++i){
+			result[i] = lhs[i] + rhs[i];
+		}
+		return result;
+	}
 }
