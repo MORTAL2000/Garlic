@@ -25,10 +25,10 @@ namespace clv::mth{
 			});
 		}
 
-		auto& operator[](std::uint32_t index){
+		constexpr auto& operator[](std::uint32_t index) noexcept{ 
 			return mat[index];
 		}
-		const auto& operator[](std::uint32_t index) const{
+		constexpr const auto& operator[](std::uint32_t index) const noexcept{
 			return mat[index];
 		}
 	};
