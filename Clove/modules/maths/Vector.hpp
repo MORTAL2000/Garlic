@@ -86,10 +86,44 @@ namespace clv::mth{
 	using Vector4d = Vector<4, double>;
 
 	template<std::uint8_t L, typename T>
+	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, T scalar){
+		Vector<L, T> result;
+		for(std::uint8_t i = 0; i < L; ++i){
+			result[i] = lhs[i] + scalar;
+		}
+		return result;
+	}
+	template<std::uint8_t L, typename T>
 	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, const Vector<L, T>& rhs){
 		Vector<L, T> result;
 		for(std::uint8_t i = 0; i < L; ++i){
 			result[i] = lhs[i] + rhs[i];
+		}
+		return result;
+	}
+
+	template<std::uint8_t L, typename T>
+	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, T scalar){
+		Vector<L, T> result;
+		for(std::uint8_t i = 0; i < L; ++i){
+			result[i] = lhs[i] - scalar;
+		}
+		return result;
+	}
+	template<std::uint8_t L, typename T>
+	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, const Vector<L, T>& rhs){
+		Vector<L, T> result;
+		for(std::uint8_t i = 0; i < L; ++i){
+			result[i] = lhs[i] - rhs[i];
+		}
+		return result;
+	}
+
+	template<std::uint8_t L, typename T>
+	constexpr Vector<L, T> operator*(const Vector<L, T>& lhs, T scalar){
+		Vector<L, T> result;
+		for(std::uint8_t i = 0; i < L; ++i){
+			result[i] = lhs[i] * scalar;
 		}
 		return result;
 	}
