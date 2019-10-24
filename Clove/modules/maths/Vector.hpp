@@ -7,7 +7,7 @@
 //TODO: inl
 
 namespace clv::mth{
-	template<std::uint32_t L, typename T>
+	template<std::uint8_t L, typename T>
 	struct Vector{ };
 
 	template<typename T>
@@ -26,7 +26,7 @@ namespace clv::mth{
 			return *reinterpret_cast<T*>(&x + index);
 		}
 		constexpr const T& operator[](std::uint8_t index) const noexcept{
-			return *reinterpret_cast<T*>(&x + index);
+			return *reinterpret_cast<const T*>(&x + index);
 		}
 	};
 
@@ -47,7 +47,7 @@ namespace clv::mth{
 			return *reinterpret_cast<T*>(&x + index);
 		}
 		constexpr const T& operator[](std::uint8_t index) const noexcept{
-			return *reinterpret_cast<T*>(&x + index);
+			return *reinterpret_cast<const T*>(&x + index);
 		}
 	};
 
@@ -69,7 +69,7 @@ namespace clv::mth{
 			return *reinterpret_cast<T*>(&x + index);
 		}
 		constexpr const T& operator[](std::uint8_t index) const noexcept{
-			return *reinterpret_cast<T*>(&x + index);
+			return *reinterpret_cast<const T*>(&x + index);
 		}
 	};
 
