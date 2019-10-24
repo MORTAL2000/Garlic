@@ -4,8 +4,6 @@
 #include <array>
 #include <type_traits>
 
-//TODO: inl
-
 namespace clv::mth{
 	template<std::uint8_t L, typename T>
 	struct Vector{ };
@@ -22,12 +20,8 @@ namespace clv::mth{
 		Vector() : x(0), y(0){}
 		Vector(T a, T b) : x(a), y(b){}
 
-		constexpr T& operator[](std::uint8_t index) noexcept{
-			return *reinterpret_cast<T*>(&x + index);
-		}
-		constexpr const T& operator[](std::uint8_t index) const noexcept{
-			return *reinterpret_cast<const T*>(&x + index);
-		}
+		constexpr T& operator[](std::uint8_t index) noexcept;
+		constexpr const T& operator[](std::uint8_t index) const noexcept;
 	};
 
 	template<typename T>
@@ -43,12 +37,8 @@ namespace clv::mth{
 		Vector() : x(0), y(0), z(0){}
 		Vector(T x, T y, T z) : x(x), y(y), z(z){}
 
-		constexpr T& operator[](std::uint8_t index) noexcept{
-			return *reinterpret_cast<T*>(&x + index);
-		}
-		constexpr const T& operator[](std::uint8_t index) const noexcept{
-			return *reinterpret_cast<const T*>(&x + index);
-		}
+		constexpr T& operator[](std::uint8_t index) noexcept;
+		constexpr const T& operator[](std::uint8_t index) const noexcept;
 	};
 
 	template<typename T>
@@ -65,13 +55,22 @@ namespace clv::mth{
 		Vector() : x(0), y(0), z(0), w(0){}
 		Vector(T x, T y, T z, T w) : x(x), y(y), z(z), w(w){}
 
-		constexpr T& operator[](std::uint8_t index) noexcept{
-			return *reinterpret_cast<T*>(&x + index);
-		}
-		constexpr const T& operator[](std::uint8_t index) const noexcept{
-			return *reinterpret_cast<const T*>(&x + index);
-		}
+		constexpr T& operator[](std::uint8_t index) noexcept;
+		constexpr const T& operator[](std::uint8_t index) const noexcept;
 	};
+
+	template<std::uint8_t L, typename T>
+	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, T scalar);
+	template<std::uint8_t L, typename T>
+	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, const Vector<L, T>& rhs);
+
+	template<std::uint8_t L, typename T>
+	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, T scalar);
+	template<std::uint8_t L, typename T>
+	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, const Vector<L, T>& rhs);
+
+	template<std::uint8_t L, typename T>
+	constexpr Vector<L, T> operator*(const Vector<L, T>& lhs, T scalar);
 
 	using Vector2i = Vector<2, std::int32_t>;
 	using Vector3i = Vector<3, std::int32_t>;
@@ -84,47 +83,6 @@ namespace clv::mth{
 	using Vector2d = Vector<2, double>;
 	using Vector3d = Vector<3, double>;
 	using Vector4d = Vector<4, double>;
-
-	template<std::uint8_t L, typename T>
-	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, T scalar){
-		Vector<L, T> result;
-		for(std::uint8_t i = 0; i < L; ++i){
-			result[i] = lhs[i] + scalar;
-		}
-		return result;
-	}
-	template<std::uint8_t L, typename T>
-	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, const Vector<L, T>& rhs){
-		Vector<L, T> result;
-		for(std::uint8_t i = 0; i < L; ++i){
-			result[i] = lhs[i] + rhs[i];
-		}
-		return result;
-	}
-
-	template<std::uint8_t L, typename T>
-	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, T scalar){
-		Vector<L, T> result;
-		for(std::uint8_t i = 0; i < L; ++i){
-			result[i] = lhs[i] - scalar;
-		}
-		return result;
-	}
-	template<std::uint8_t L, typename T>
-	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, const Vector<L, T>& rhs){
-		Vector<L, T> result;
-		for(std::uint8_t i = 0; i < L; ++i){
-			result[i] = lhs[i] - rhs[i];
-		}
-		return result;
-	}
-
-	template<std::uint8_t L, typename T>
-	constexpr Vector<L, T> operator*(const Vector<L, T>& lhs, T scalar){
-		Vector<L, T> result;
-		for(std::uint8_t i = 0; i < L; ++i){
-			result[i] = lhs[i] * scalar;
-		}
-		return result;
-	}
 }
+
+#include "Vector.inl"
