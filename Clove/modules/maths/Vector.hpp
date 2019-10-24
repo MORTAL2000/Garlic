@@ -85,11 +85,10 @@ namespace clv::mth{
 	using Vector3d = Vector<3, double>;
 	using Vector4d = Vector<4, double>;
 
-	//TODO: operator isn't picked up
-	template<std::uint32_t L, typename T, typename U, typename V>
-	constexpr Vector<L, V> operator+(const Vector<L, T>& lhs, const Vector<L, U>& rhs){
-		Vector<L, V> result;
-		for(std::uint32_t i = 0; i < L; ++i){
+	template<std::uint8_t L, typename T>
+	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, const Vector<L, T>& rhs){
+		Vector<L, T> result;
+		for(std::uint8_t i = 0; i < L; ++i){
 			result[i] = lhs[i] + rhs[i];
 		}
 		return result;
