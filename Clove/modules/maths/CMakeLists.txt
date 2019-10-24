@@ -7,6 +7,8 @@ add_library(
 		Matrix.inl
 		Vector.hpp
 		Vector.inl
+		VectorMath.hpp
+
 		Temp.cpp #Required because of no cpp files and need to generate the .lib
 )
 
