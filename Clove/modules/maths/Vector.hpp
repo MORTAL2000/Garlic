@@ -4,7 +4,9 @@
 #include <type_traits>
 
 namespace clv::mth{
-	template<std::uint8_t L, typename T>
+	using length_type = std::uint8_t;
+
+	template<length_type L, typename T>
 	struct Vector{ };
 
 	template<typename T>
@@ -19,8 +21,8 @@ namespace clv::mth{
 		Vector() : x(0), y(0){}
 		Vector(T a, T b) : x(a), y(b){}
 
-		constexpr T& operator[](std::uint8_t index) noexcept;
-		constexpr const T& operator[](std::uint8_t index) const noexcept;
+		constexpr T& operator[](length_type index) noexcept;
+		constexpr const T& operator[](length_type index) const noexcept;
 	};
 
 	template<typename T>
@@ -36,8 +38,8 @@ namespace clv::mth{
 		Vector() : x(0), y(0), z(0){}
 		Vector(T x, T y, T z) : x(x), y(y), z(z){}
 
-		constexpr T& operator[](std::uint8_t index) noexcept;
-		constexpr const T& operator[](std::uint8_t index) const noexcept;
+		constexpr T& operator[](length_type index) noexcept;
+		constexpr const T& operator[](length_type index) const noexcept;
 	};
 
 	template<typename T>
@@ -54,21 +56,21 @@ namespace clv::mth{
 		Vector() : x(0), y(0), z(0), w(0){}
 		Vector(T x, T y, T z, T w) : x(x), y(y), z(z), w(w){}
 
-		constexpr T& operator[](std::uint8_t index) noexcept;
-		constexpr const T& operator[](std::uint8_t index) const noexcept;
+		constexpr T& operator[](length_type index) noexcept;
+		constexpr const T& operator[](length_type index) const noexcept;
 	};
 
-	template<std::uint8_t L, typename T>
+	template<length_type L, typename T>
 	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, T scalar);
-	template<std::uint8_t L, typename T>
+	template<length_type L, typename T>
 	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, const Vector<L, T>& rhs);
 
-	template<std::uint8_t L, typename T>
+	template<length_type L, typename T>
 	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, T scalar);
-	template<std::uint8_t L, typename T>
+	template<length_type L, typename T>
 	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, const Vector<L, T>& rhs);
 
-	template<std::uint8_t L, typename T>
+	template<length_type L, typename T>
 	constexpr Vector<L, T> operator*(const Vector<L, T>& lhs, T scalar);
 
 	using Vector2i = Vector<2, std::int32_t>;
