@@ -27,7 +27,12 @@ namespace clv::mth{
 
 	template<length_type L, typename T>
 	T distance(const Vector<L, T>& vector1, const Vector<L, T>& vector2){
-		//TODO
+		T result = 0;
+		for(length_type i = 0; i < L; ++i){
+			const T diff = vector1[i] - vector2[i];
+			result += diff * diff;
+		}
+		return sqrt(result);
 	}
 
 	template<length_type L, typename T>
