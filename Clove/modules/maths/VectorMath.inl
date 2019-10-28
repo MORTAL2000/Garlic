@@ -1,7 +1,14 @@
 namespace clv::mth{
 	template<length_type L, typename T>
 	Vector<L, T> normalise(const Vector<L, T>& vector){
-		//TODO
+		Vector<L, T> result;
+		T vectorLength = length(vector);
+
+		for(length_type i = 0; i < L; ++i){
+			result[i] = vector[i] / vectorLength;
+		}
+
+		return result;
 	}
 
 	template<typename T>
