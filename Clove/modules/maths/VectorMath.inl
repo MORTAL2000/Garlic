@@ -21,6 +21,10 @@ namespace clv::mth{
 
 	template<length_type L, typename T>
 	T length(const Vector<L, T>& vector){
-		//TODO
+		T result = 0;
+		for(length_type i = 0; i < L; ++i){
+			result += vector[i] * vector[i];
+		}
+		return sqrt(result);
 	}
 }
