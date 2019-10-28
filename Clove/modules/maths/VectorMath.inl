@@ -10,8 +10,12 @@ namespace clv::mth{
 	}
 
 	template<length_type L, typename T>
-	Vector<L, T> dot(const Vector<L, T>& vector1, const Vector<L, T>& vector2){
-		//TODO
+	T dot(const Vector<L, T>& vector1, const Vector<L, T>& vector2){
+		T result = 0;
+		for(length_type i = 0; i < L; ++i){
+			result += vector1[i] * vector2[i];
+		}
+		return result;
 	}
 
 	template<length_type L, typename T>

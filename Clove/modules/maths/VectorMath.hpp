@@ -8,7 +8,7 @@ namespace clv::mth{
 	Vector<3, T> cross(const Vector<3, T>& vector1, const Vector<3, T>& vector2);
 
 	template<length_type L, typename T>
-	Vector<L, T> dot(const Vector<L, T>& vector1, const Vector<L, T>& vector2);
+	T dot(const Vector<L, T>& vector1, const Vector<L, T>& vector2);
 
 	template<length_type L, typename T>
 	T distance(const Vector<L, T>& vector1, const Vector<L, T>& vector2);
