@@ -5,6 +5,8 @@ add_library(
 	STATIC
 		Matrix.hpp
 		Matrix.inl
+		MatrixMath.hpp
+		MatrixMath.inl
 		Vector.hpp
 		Vector.inl
 		VectorMath.hpp
