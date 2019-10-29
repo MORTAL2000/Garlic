@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Vector.hpp"
 
 namespace clv::mth{
