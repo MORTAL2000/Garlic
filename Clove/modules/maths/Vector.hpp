@@ -61,17 +61,17 @@ namespace clv::mth{
 	};
 
 	template<length_type L, typename T>
-	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, T scalar);
+	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, T scalar) noexcept;
 	template<length_type L, typename T>
-	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, const Vector<L, T>& rhs);
+	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, const Vector<L, T>& rhs) noexcept;
 
 	template<length_type L, typename T>
-	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, T scalar);
+	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, T scalar) noexcept;
 	template<length_type L, typename T>
-	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, const Vector<L, T>& rhs);
+	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, const Vector<L, T>& rhs) noexcept;
 
 	template<length_type L, typename T>
-	constexpr Vector<L, T> operator*(const Vector<L, T>& lhs, T scalar);
+	constexpr Vector<L, T> operator*(const Vector<L, T>& lhs, T scalar) noexcept;
 
 	using Vector2i = Vector<2, std::int32_t>;
 	using Vector3i = Vector<3, std::int32_t>;

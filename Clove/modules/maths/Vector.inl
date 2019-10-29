@@ -30,7 +30,7 @@ namespace clv::mth{
 	}
 
     template<length_type L, typename T>
-	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, T scalar){
+	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, T scalar) noexcept{
 		Vector<L, T> result;
 		for(length_type i = 0; i < L; ++i){
 			result[i] = lhs[i] + scalar;
@@ -39,7 +39,7 @@ namespace clv::mth{
 	}
 
 	template<length_type L, typename T>
-	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, const Vector<L, T>& rhs){
+	constexpr Vector<L, T> operator+(const Vector<L, T>& lhs, const Vector<L, T>& rhs) noexcept{
 		Vector<L, T> result;
 		for(length_type i = 0; i < L; ++i){
 			result[i] = lhs[i] + rhs[i];
@@ -48,7 +48,7 @@ namespace clv::mth{
 	}
 
 	template<length_type L, typename T>
-	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, T scalar){
+	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, T scalar) noexcept{
 		Vector<L, T> result;
 		for(length_type i = 0; i < L; ++i){
 			result[i] = lhs[i] - scalar;
@@ -57,7 +57,7 @@ namespace clv::mth{
 	}
 	
 	template<length_type L, typename T>
-	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, const Vector<L, T>& rhs){
+	constexpr Vector<L, T> operator-(const Vector<L, T>& lhs, const Vector<L, T>& rhs) noexcept{
 		Vector<L, T> result;
 		for(length_type i = 0; i < L; ++i){
 			result[i] = lhs[i] - rhs[i];
@@ -66,7 +66,7 @@ namespace clv::mth{
 	}
 
 	template<length_type L, typename T>
-	constexpr Vector<L, T> operator*(const Vector<L, T>& lhs, T scalar){
+	constexpr Vector<L, T> operator*(const Vector<L, T>& lhs, T scalar) noexcept{
 		Vector<L, T> result;
 		for(length_type i = 0; i < L; ++i){
 			result[i] = lhs[i] * scalar;
