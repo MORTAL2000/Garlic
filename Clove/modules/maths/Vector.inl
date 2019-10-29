@@ -1,4 +1,9 @@
 namespace clv::mth{
+	template<typename T>
+    T* Vector<2, T>::ptr(){
+		return &(x);
+	}
+
     template<typename T>
     constexpr T& Vector<2, T>::operator[](length_type index) noexcept{
 		return *reinterpret_cast<T*>(&x + index);
@@ -9,6 +14,11 @@ namespace clv::mth{
 		return *reinterpret_cast<const T*>(&x + index);
 	}
 
+	template<typename T>
+    T* Vector<3, T>::ptr(){
+		return &(x);
+	}
+
     template<typename T>
     constexpr T& Vector<3, T>::operator[](length_type index) noexcept{
 		return *reinterpret_cast<T*>(&x + index);
@@ -17,6 +27,11 @@ namespace clv::mth{
     template<typename T>
 	constexpr const T& Vector<3, T>::operator[](length_type index) const noexcept{
 		return *reinterpret_cast<const T*>(&x + index);
+	}
+
+	template<typename T>
+    T* Vector<4, T>::ptr(){
+		return &(x);
 	}
 
     template<typename T>

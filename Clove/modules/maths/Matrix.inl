@@ -9,6 +9,11 @@ namespace clv::mth{
     }
 
     template<std::uint32_t R, std::uint32_t C, typename T>
+	T* Matrix<R, C, T>::ptr(){
+		return &(mat[0][0]);
+	}
+
+    template<std::uint32_t R, std::uint32_t C, typename T>
     constexpr auto& Matrix<R, C, T>::operator[](std::uint32_t index) noexcept{ 
 		return mat[index];
 	}

@@ -17,6 +17,8 @@ namespace clv::mth{
 	public:
 		Matrix();
 
+		T* ptr();
+
 		constexpr auto& operator[](std::uint32_t index) noexcept;
 		constexpr const auto& operator[](std::uint32_t index) const noexcept;
 	};
