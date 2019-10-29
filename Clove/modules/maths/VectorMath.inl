@@ -11,7 +11,11 @@ namespace clv::mth{
 
 	template<typename T>
 	constexpr Vector<3, T> cross(const Vector<3, T>& vector1, const Vector<3, T>& vector2) noexcept{
-		//TODO
+		return {
+			(vector1.y * vector2.z) - (vector1.z * vector2.y),
+			(vector1.z * vector2.x) - (vector1.x * vector2.z),
+			(vector1.x * vector2.y) - (vector1.y * vector2.x)
+		};
 	}
 
 	template<length_type L, typename T>
