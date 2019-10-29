@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Matrix.hpp"
+#include "MatrixMath.hpp"
 #include "Vector.hpp"
 #include "VectorMath.hpp"
 
@@ -84,6 +85,21 @@ int main(){
 	std::cout << "aNorm dot bNorm is " << clv::mth::dot(an, bn) << std::endl;
 
 	std::cout << "a is " << clv::mth::distance(a, b) << " units away from b" << std::endl;
+
+	clv::mth::Vector3f crossA = { 2.0f, 3.0f, 4.0f};
+	clv::mth::Vector3f crossB = { 5.0f, 6.0f, 7.0f};
+
+	auto crossC = clv::mth::cross(crossA, crossB);
+
+    std::cout << "crossA.x:" << crossA.x << " crossA.y:" << crossA.y << " crossA.z:" << crossA.z << std::endl;
+    std::cout << "crossB.x:" << crossB.x << " crossB.y:" << crossB.y << " crossB.z:" << crossB.z << std::endl;
+    std::cout << "crossC.x:" << crossC.x << " crossC.y:" << crossC.y << " crossC.z:" << crossC.z << std::endl;
+
+	float* apa = matA.ptr();
+	float* apb = a.ptr();
+	float* apc = ca.ptr();
+	float* apf = d.ptr();
+
 
     return 0;
 }
