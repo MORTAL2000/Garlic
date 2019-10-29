@@ -5,7 +5,9 @@
 #include <type_traits>
 
 namespace clv::mth{
-	template<std::uint32_t R, std::uint32_t C, typename T>
+	using size_type = std::uint32_t;
+
+	template<size_type R, size_type C, typename T>
 	struct Matrix{
 		static_assert(std::is_arithmetic_v<T>, "Type is not arithmetic!");
 
@@ -19,17 +21,17 @@ namespace clv::mth{
 
 		T* ptr();
 
-		constexpr auto& operator[](std::uint32_t index) noexcept;
-		constexpr const auto& operator[](std::uint32_t index) const noexcept;
+		constexpr auto& operator[](size_type index) noexcept;
+		constexpr const auto& operator[](size_type index) const noexcept;
 	};
 
-	template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
+	template<size_type aR, size_type aC, size_type bR, size_type bC, typename T>
 	constexpr Matrix<aR, aC, T> operator+(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs) noexcept;
 
-	template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
+	template<size_type aR, size_type aC, size_type bR, size_type bC, typename T>
 	constexpr Matrix<aR, aC, T> operator-(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs) noexcept;
 
-	template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
+	template<size_type aR, size_type aC, size_type bR, size_type bC, typename T>
 	constexpr Matrix<aR, bC, T> operator*(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs) noexcept;
 
 	using Matrix2i = Matrix<2, 2, std::int32_t>;

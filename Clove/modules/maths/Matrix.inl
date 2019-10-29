@@ -1,5 +1,5 @@
 namespace clv::mth{
-    template<std::uint32_t R, std::uint32_t C, typename T>
+    template<size_type R, size_type C, typename T>
     Matrix<R, C, T>::Matrix(){
         std::for_each(mat.begin(), mat.end(), [](auto& innerArray){
 			std::for_each(innerArray.begin(), innerArray.end(), [](T& value){
@@ -8,22 +8,22 @@ namespace clv::mth{
 		});
     }
 
-    template<std::uint32_t R, std::uint32_t C, typename T>
+    template<size_type R, size_type C, typename T>
 	T* Matrix<R, C, T>::ptr(){
 		return &(mat[0][0]);
 	}
 
-    template<std::uint32_t R, std::uint32_t C, typename T>
-    constexpr auto& Matrix<R, C, T>::operator[](std::uint32_t index) noexcept{ 
+    template<size_type R, size_type C, typename T>
+    constexpr auto& Matrix<R, C, T>::operator[](size_type index) noexcept{ 
 		return mat[index];
 	}
 
-    template<std::uint32_t R, std::uint32_t C, typename T>
-	constexpr const auto& Matrix<R, C, T>::operator[](std::uint32_t index) const noexcept{
+    template<size_type R, size_type C, typename T>
+	constexpr const auto& Matrix<R, C, T>::operator[](size_type index) const noexcept{
 		return mat[index];
 	}
 
-    template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
+    template<size_type aR, size_type aC, size_type bR, size_type bC, typename T>
 	constexpr Matrix<aR, aC, T> operator+(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs) noexcept{
 		static_assert(aR == bR && aC == bC, "Matrices must be the same size");
 
@@ -38,7 +38,7 @@ namespace clv::mth{
 		return result;
 	}
 
-	template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
+	template<size_type aR, size_type aC, size_type bR, size_type bC, typename T>
 	constexpr Matrix<aR, aC, T> operator-(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs) noexcept{
 		static_assert(aR == bR && aC == bC, "Matrices must be the same size");
 
@@ -53,7 +53,7 @@ namespace clv::mth{
 		return result;
 	}
 
-	template<std::uint32_t aR, std::uint32_t aC, std::uint32_t bR, std::uint32_t bC, typename T>
+	template<size_type aR, size_type aC, size_type bR, size_type bC, typename T>
 	constexpr Matrix<aR, bC, T> operator*(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs) noexcept{
 		static_assert(aC == bR, "Inner values must be the same");
 
