@@ -43,29 +43,29 @@ int main(){
 
     std::cout << "VECTORS" << std::endl;
 
-    clv::mth::Vector2f a{5, 4};
+    clv::mth::vec2f a{5, 4};
     std::cout << "a.[0]:" << a[0] << " a.[1]:" << a[1] << std::endl;
     std::cout << "a.x:" << a.x << " a.y:" << a.y << std::endl;
     std::cout << "a.r:" << a.r << " a.g:" << a.g << std::endl;
     std::cout << "a.u:" << a.u << " a.v:" << a.v << std::endl;
 
 
-    clv::mth::Vector2f b{5, -3};
+    clv::mth::vec2f b{5, -3};
     std::cout << "b.x:" << b[0] << " b.y:" << b[1] << std::endl;
 
     auto ab = a + b;
     std::cout << "a+b.x:" << ab[0] << " a+b.y:" << ab[1] << std::endl;
 
-    clv::mth::Vector3f ca{34, -6, 200};
+    clv::mth::vec3f ca{34, -6, 200};
     std::cout << "ca.x:" << ca[0] << " ca.y:" << ca[1] << " ca.z:" << ca[2] << std::endl;
 
-    clv::mth::Vector3f cb{34, -6, 200};
+    clv::mth::vec3f cb{34, -6, 200};
     std::cout << "cb.x:" << cb[0] << " cb.y:" << cb[1] << " cb.z:" << cb[2] << std::endl;
 
     auto cc = ca - cb;
     std::cout << "cc.x:" << cc[0] << " cc.y:" << cc[1] << " cc.z:" << cc[2] << std::endl;
 
-    clv::mth::Vector4f d{345.756f, 100.00002, 89, 1};
+    clv::mth::vec4f d{345.756f, 100.00002, 89, 1};
     std::cout << "d.x:" << d[0] << " d.y:" << d[1] << " d.z:" << d[2] << " d.w:" << d[3] << std::endl;
 
     auto d2 = d * 5.0f;
@@ -86,8 +86,8 @@ int main(){
 
 	std::cout << "a is " << clv::mth::distance(a, b) << " units away from b" << std::endl;
 
-	clv::mth::Vector3f crossA = { 2.0f, 3.0f, 4.0f};
-	clv::mth::Vector3f crossB = { 5.0f, 6.0f, 7.0f};
+	clv::mth::vec3f crossA = { 2.0f, 3.0f, 4.0f};
+	clv::mth::vec3f crossB = { 5.0f, 6.0f, 7.0f};
 
 	auto crossC = clv::mth::cross(crossA, crossB);
 
