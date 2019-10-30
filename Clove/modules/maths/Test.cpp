@@ -8,13 +8,13 @@
 int main(){
     std::cout << "MATRICES" << std::endl;
 
-    clv::mth::Matrix<2, 2, float> matA;
+    clv::mth::mat<2, 2, float> matA;
     matA[0][0] = 1;
     matA[0][1] = 2;
     matA[1][0] = 3;
     matA[1][1] = 4;
 
-    clv::mth::Matrix2f matB;
+    clv::mth::mat2f matB;
     matB[0][0] = 1;
     matB[0][1] = 1;
     matB[1][0] = 1;

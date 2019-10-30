@@ -1,7 +1,7 @@
 namespace clv::mth{
     template<size_type R, size_type C, typename T>
-    Matrix<R, C, T>::Matrix(){
-        std::for_each(mat.begin(), mat.end(), [](auto& innerArray){
+    mat<R, C, T>::mat(){
+        std::for_each(data.begin(), data.end(), [](auto& innerArray){
 			std::for_each(innerArray.begin(), innerArray.end(), [](T& value){
 				value = 0;
 			});
@@ -9,25 +9,25 @@ namespace clv::mth{
     }
 
     template<size_type R, size_type C, typename T>
-	T* Matrix<R, C, T>::ptr(){
-		return &(mat[0][0]);
+	T* mat<R, C, T>::ptr(){
+		return &(data[0][0]);
 	}
 
     template<size_type R, size_type C, typename T>
-    constexpr auto& Matrix<R, C, T>::operator[](size_type index) noexcept{ 
-		return mat[index];
+    constexpr auto& mat<R, C, T>::operator[](size_type index) noexcept{ 
+		return data[index];
 	}
 
     template<size_type R, size_type C, typename T>
-	constexpr const auto& Matrix<R, C, T>::operator[](size_type index) const noexcept{
-		return mat[index];
+	constexpr const auto& mat<R, C, T>::operator[](size_type index) const noexcept{
+		return data[index];
 	}
 
     template<size_type aR, size_type aC, size_type bR, size_type bC, typename T>
-	constexpr Matrix<aR, aC, T> operator+(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs) noexcept{
+	constexpr mat<aR, aC, T> operator+(const mat<aR, aC, T>& lhs, const mat<bR, bC, T>& rhs) noexcept{
 		static_assert(aR == bR && aC == bC, "Matrices must be the same size");
 
-		Matrix<aR, aC, T> result;
+		mat<aR, aC, T> result;
 
 		for(std::size_t row = 0; row < aR; ++row){
 			for(std::size_t col = 0; col < aC; ++col){
@@ -39,10 +39,10 @@ namespace clv::mth{
 	}
 
 	template<size_type aR, size_type aC, size_type bR, size_type bC, typename T>
-	constexpr Matrix<aR, aC, T> operator-(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs) noexcept{
+	constexpr mat<aR, aC, T> operator-(const mat<aR, aC, T>& lhs, const mat<bR, bC, T>& rhs) noexcept{
 		static_assert(aR == bR && aC == bC, "Matrices must be the same size");
 
-		Matrix<aR, aC, T> result;
+		mat<aR, aC, T> result;
 
 		for(std::size_t row = 0; row < aR; ++row){
 			for(std::size_t col = 0; col < aC; ++col){
@@ -54,10 +54,10 @@ namespace clv::mth{
 	}
 
 	template<size_type aR, size_type aC, size_type bR, size_type bC, typename T>
-	constexpr Matrix<aR, bC, T> operator*(const Matrix<aR, aC, T>& lhs, const Matrix<bR, bC, T>& rhs) noexcept{
+	constexpr mat<aR, bC, T> operator*(const mat<aR, aC, T>& lhs, const mat<bR, bC, T>& rhs) noexcept{
 		static_assert(aC == bR, "Inner values must be the same");
 
-		Matrix<aR, bC, T> result;
+		mat<aR, bC, T> result;
 
 		for(std::size_t row = 0; row < aR; ++row){
 			for(std::size_t col = 0; col < bC; ++col){
