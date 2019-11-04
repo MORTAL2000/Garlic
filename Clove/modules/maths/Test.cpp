@@ -107,10 +107,12 @@ int main(){
 
 	{
 		clv::mth::vec2f swizA{ 1, 2 };
-    	std::cout << "swizA.x:" << swizA[0] << " swizA.y:" << swizA[1] << std::endl;
-
-		std::cout << "swizA.yx = swizA" << std::endl;
-		swizA.yx = swizA;
+		clv::mth::vec2f swizB{ 3, 4 };
+		std::cout << "swizA.x:" << swizA[0] << " swizA.y:" << swizA[1] << std::endl;
+		std::cout << "swizB.x:" << swizB[0] << " swizB.y:" << swizB[1] << std::endl;
+		
+		std::cout << "swizA.yx = swizB" << std::endl;
+		swizA.yx = swizB;
 
 		std::cout << "swizA.x:" << swizA.x << " swizA.y:" << swizA.y << std::endl; //BUG: Gives 1, 1 - expected 2, 1
 
