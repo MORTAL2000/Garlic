@@ -7,28 +7,6 @@
 namespace clv::mth{
 	using length_type = std::uint8_t;
 
-	//TODO: inl
-	template<typename VecType, typename DataType, length_type ...lengthIndices>
-	class swizzle{ //class / struct?
-		//VARIABLES
-	private:
-		DataType vec[sizeof...(lengthIndices)]; //std::array?
-
-		//FUNCTIONS
-	public:
-		VecType& operator=(const VecType& other){
-			length_type indices[] = { lengthIndices... };
-			for(length_type i = 0; i < sizeof...(lengthIndices); ++i){
-				vec[indices[i]] = other[i];
-			}
-			return *(VecType*)this; //Use c++ style
-		}
-
-		operator VecType() const{
-			return VecType{ vec[lengthIndices]... };
-		}
-	};
-
 	template<length_type L, typename T>
 	struct vec{ };
 
@@ -42,9 +20,6 @@ namespace clv::mth{
 			struct{ T x; T y; };
 			struct{ T r; T g; };
 			struct{ T s; T t; };
-
-			swizzle<vec<2, T>, T, 0, 1> xy;
-			swizzle<vec<2, T>, T, 1, 0> yx;
 		};
 
 		//FUNCTIONS

@@ -103,26 +103,5 @@ int main(){
 	float* apf = d.ptr();
 	}
 
-    std::cout << "VECTOR SWIZZLE" << std::endl;
-
-	{
-		clv::mth::vec2f swizA{ 1, 2 };
-		clv::mth::vec2f swizB{ 3, 4 };
-		clv::mth::vec2f swizC{ 8, 9 };
-		std::cout << "swizA.x:" << swizA[0] << " swizA.y:" << swizA[1] << std::endl;
-		std::cout << "swizB.x:" << swizB[0] << " swizB.y:" << swizB[1] << std::endl;
-		std::cout << "swizC.x:" << swizC[0] << " swizC.y:" << swizC[1] << std::endl;
-
-		std::cout << "swizA.yx = swizB" << std::endl;
-		swizA.yx = swizB;
-
-		std::cout << "swizA.x:" << swizA.x << " swizA.y:" << swizA.y << std::endl; //BUG: Gives 1, 1 - expected 2, 1
-
-		std::cout << "swizA = swizC.yx" << std::endl;
-		swizA = swizC.yx;
-
-		std::cout << "swizA.x:" << swizA[0] << " swizA.y:" << swizA[1] << std::endl;
-	}
-
     return 0;
 }
