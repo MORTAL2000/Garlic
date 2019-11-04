@@ -42,7 +42,7 @@ namespace clv::mth{
 
 			struct{ T x; T y; T z; };
 			struct{ T r; T g; T b; };
-			struct{ T s; T t; T u; };
+			struct{ T s; T t; T p; };
 		};
 
 		//FUNCTIONS
@@ -65,9 +65,8 @@ namespace clv::mth{
 			
 			struct{ T x; T y; T z; T w; };
 			struct{ T r; T g; T b; T a; };
-			struct{ T s; T t; T u; T v; };
+			struct{ T s; T t; T p; T q; };
 		};
-		
 
 		//FUNCTIONS
 	public:
