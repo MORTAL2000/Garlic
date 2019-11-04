@@ -13,8 +13,11 @@ namespace clv::mth{
 	struct vec<2, T>{
 		//VARIABLES
 	public:
-		union{ T x; T r; T u; };
-		union{ T y; T g; T v; };
+		union{
+			struct{ T x; T y; };
+			struct{ T r; T g; };
+			struct{ T s; T t; };
+		};
 
 		//FUNCTIONS
 	public:
@@ -31,9 +34,11 @@ namespace clv::mth{
 	struct vec<3, T>{
 		//VARIABLES
 	public:
-		union{ T x; T r; };
-		union{ T y; T g; };
-		union{ T z; T b; };
+		union{
+			struct{ T x; T y; T z; };
+			struct{ T r; T g; T b; };
+			struct{ T s; T t; T u; };
+		};
 
 		//FUNCTIONS
 	public:
@@ -50,10 +55,12 @@ namespace clv::mth{
 	struct vec<4, T>{
 		//VARIABLES
 	public:
-		union{ T x; T r; };
-		union{ T y; T g; };
-		union{ T z; T b; };
-		union{ T w; T a; };
+		union{
+			struct{ T x; T y; T z; T w; };
+			struct{ T r; T g; T b; T a; };
+			struct{ T s; T t; T u; T v; };
+		};
+		
 
 		//FUNCTIONS
 	public:
