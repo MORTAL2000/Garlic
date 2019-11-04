@@ -6,6 +6,7 @@
 #include "VectorMath.hpp"
 
 int main(){
+	{
     std::cout << "MATRICES" << std::endl;
 
     clv::mth::mat<2, 2, float> matA;
@@ -38,16 +39,18 @@ int main(){
     std::cout << "resultAdd[0][0]:" << resultAdd[0][0] << " resultAdd[0][1]:" << resultAdd[0][1] << std::endl;
     std::cout << "resultAdd[1][0]:" << resultAdd[1][0] << " resultAdd[1][1]:" << resultAdd[1][1] << std::endl;
 
+	float* apa = matA.ptr();
+	}
 
 
-
+	{
     std::cout << "VECTORS" << std::endl;
 
     clv::mth::vec2f a{5, 4};
     std::cout << "a.[0]:" << a[0] << " a.[1]:" << a[1] << std::endl;
     std::cout << "a.x:" << a.x << " a.y:" << a.y << std::endl;
     std::cout << "a.r:" << a.r << " a.g:" << a.g << std::endl;
-    std::cout << "a.u:" << a.u << " a.v:" << a.v << std::endl;
+    std::cout << "a.s:" << a.s << " a.t:" << a.t << std::endl;
 
 
     clv::mth::vec2f b{5, -3};
@@ -95,11 +98,27 @@ int main(){
     std::cout << "crossB.x:" << crossB.x << " crossB.y:" << crossB.y << " crossB.z:" << crossB.z << std::endl;
     std::cout << "crossC.x:" << crossC.x << " crossC.y:" << crossC.y << " crossC.z:" << crossC.z << std::endl;
 
-	float* apa = matA.ptr();
 	float* apb = a.ptr();
 	float* apc = ca.ptr();
 	float* apf = d.ptr();
+	}
 
+    std::cout << "VECTOR SWIZZLE" << std::endl;
+
+	{
+		clv::mth::vec2f swizA{ 1, 2 };
+    	std::cout << "swizA.x:" << swizA[0] << " swizA.y:" << swizA[1] << std::endl;
+
+		std::cout << "swizA.yx = swizA" << std::endl;
+		swizA.yx = swizA;
+
+		std::cout << "swizA.x:" << swizA.x << " swizA.y:" << swizA.y << std::endl; //BUG: Gives 1, 1 - expected 2, 1
+
+		/*std::cout << "swizA.yz /= 2";
+		swizA = swizA.yz * 0.5f;
+
+		std::cout << "swizA.x:" << swizA[0] << " swizA.y:" << swizA[1] << std::endl;*/
+	}
 
     return 0;
 }
