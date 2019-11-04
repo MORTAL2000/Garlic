@@ -23,6 +23,10 @@ namespace clv::mth{
 			}
 			return *(VecType*)this; //Use c++ style
 		}
+
+		operator VecType() const{
+			return VecType{ vec[lengthIndices]... };
+		}
 	};
 
 	template<length_type L, typename T>
