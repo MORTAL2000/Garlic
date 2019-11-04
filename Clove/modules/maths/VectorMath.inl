@@ -1,3 +1,5 @@
+#include <cmath>
+
 namespace clv::mth{
 	template<length_type L, typename T>
 	constexpr vec<L, T> normalise(const vec<L, T>& vector) noexcept{

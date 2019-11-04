@@ -1,7 +1,8 @@
 #pragma once
 
-#include <cinttypes>
 #include <array>
+#include <algorithm>
+#include <cinttypes>
 #include <type_traits>
 
 namespace clv::mth{
