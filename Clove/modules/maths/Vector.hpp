@@ -1,5 +1,6 @@
 #pragma	once
 
+#include <array>
 #include <cinttypes>
 #include <type_traits>
 
@@ -14,6 +15,8 @@ namespace clv::mth{
 		//VARIABLES
 	public:
 		union{
+			std::array<T, 2> data;
+
 			struct{ T x; T y; };
 			struct{ T r; T g; };
 			struct{ T s; T t; };
@@ -35,6 +38,8 @@ namespace clv::mth{
 		//VARIABLES
 	public:
 		union{
+			std::array<T, 3> data;
+
 			struct{ T x; T y; T z; };
 			struct{ T r; T g; T b; };
 			struct{ T s; T t; T u; };
@@ -56,6 +61,8 @@ namespace clv::mth{
 		//VARIABLES
 	public:
 		union{
+			std::array<T, 4> data;
+			
 			struct{ T x; T y; T z; T w; };
 			struct{ T r; T g; T b; T a; };
 			struct{ T s; T t; T u; T v; };

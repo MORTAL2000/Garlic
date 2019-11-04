@@ -1,47 +1,47 @@
 namespace clv::mth{
 	template<typename T>
     T* vec<2, T>::ptr(){
-		return &(x);
+		return data.data();
 	}
 
     template<typename T>
     constexpr T& vec<2, T>::operator[](length_type index) noexcept{
-		return *reinterpret_cast<T*>(&x + index);
+		return data[index];
 	}
 
     template<typename T>
 	constexpr const T& vec<2, T>::operator[](length_type index) const noexcept{
-		return *reinterpret_cast<const T*>(&x + index);
+		return data[index];
 	}
 
 	template<typename T>
     T* vec<3, T>::ptr(){
-		return &(x);
+		return data.data();
 	}
 
     template<typename T>
     constexpr T& vec<3, T>::operator[](length_type index) noexcept{
-		return *reinterpret_cast<T*>(&x + index);
+		return data[index];
 	}
 
     template<typename T>
 	constexpr const T& vec<3, T>::operator[](length_type index) const noexcept{
-		return *reinterpret_cast<const T*>(&x + index);
+		return data[index];
 	}
 
 	template<typename T>
     T* vec<4, T>::ptr(){
-		return &(x);
+		return data.data();
 	}
 
     template<typename T>
     constexpr T& vec<4, T>::operator[](length_type index) noexcept{
-		return *reinterpret_cast<T*>(&x + index);
+		return data[index];
 	}
 
     template<typename T>
 	constexpr const T& vec<4, T>::operator[](length_type index) const noexcept{
-		return *reinterpret_cast<const T*>(&x + index);
+		return data[index];
 	}
 
     template<length_type L, typename T>
