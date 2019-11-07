@@ -40,6 +40,30 @@ int main(){
     std::cout << "resultAdd[1][0]:" << resultAdd[1][0] << " resultAdd[1][1]:" << resultAdd[1][1] << std::endl;
 
 	float* apa = matA.ptr();
+
+	auto translatedMatrix = clv::mth::translate(clv::mth::mat4f::identity(), clv::mth::vec3f{5.0f, 5.0f, 5.0f});
+	std::cout << "translatedMatrix[0][0]:" << translatedMatrix[0][0] << " translatedMatrix[1][0]:" << translatedMatrix[1][0] << " translatedMatrix[2][0]:" << translatedMatrix[2][0] << " translatedMatrix[3][0]:" << translatedMatrix[3][0] << std::endl;
+    std::cout << "translatedMatrix[0][1]:" << translatedMatrix[0][1] << " translatedMatrix[1][1]:" << translatedMatrix[1][1] << " translatedMatrix[2][1]:" << translatedMatrix[2][1] << " translatedMatrix[3][1]:" << translatedMatrix[3][1] << std::endl;
+    std::cout << "translatedMatrix[0][2]:" << translatedMatrix[0][2] << " translatedMatrix[1][2]:" << translatedMatrix[1][2] << " translatedMatrix[2][2]:" << translatedMatrix[2][2] << " translatedMatrix[3][2]:" << translatedMatrix[3][2] << std::endl;
+    std::cout << "translatedMatrix[0][3]:" << translatedMatrix[0][3] << " translatedMatrix[1][3]:" << translatedMatrix[1][3] << " translatedMatrix[2][3]:" << translatedMatrix[2][3] << " translatedMatrix[3][3]:" << translatedMatrix[3][3] << std::endl;
+
+	auto rotatedMatrix = clv::mth::rotate(clv::mth::mat4f::identity(), 5.0f, clv::mth::vec3f{1.0f, 1.0f, 1.0f});
+	std::cout << "rotatedMatrix[0][0]:" << rotatedMatrix[0][0] << " rotatedMatrix[1][0]:" << rotatedMatrix[1][0] << " rotatedMatrix[2][0]:" << rotatedMatrix[2][0] << " rotatedMatrix[3][0]:" << rotatedMatrix[3][0] << std::endl;
+    std::cout << "rotatedMatrix[0][1]:" << rotatedMatrix[0][1] << " rotatedMatrix[1][1]:" << rotatedMatrix[1][1] << " rotatedMatrix[2][1]:" << rotatedMatrix[2][1] << " rotatedMatrix[3][1]:" << rotatedMatrix[3][1] << std::endl;
+    std::cout << "rotatedMatrix[0][2]:" << rotatedMatrix[0][2] << " rotatedMatrix[1][2]:" << rotatedMatrix[1][2] << " rotatedMatrix[2][2]:" << rotatedMatrix[2][2] << " rotatedMatrix[3][2]:" << rotatedMatrix[3][2] << std::endl;
+    std::cout << "rotatedMatrix[0][3]:" << rotatedMatrix[0][3] << " rotatedMatrix[1][3]:" << rotatedMatrix[1][3] << " rotatedMatrix[2][3]:" << rotatedMatrix[2][3] << " rotatedMatrix[3][3]:" << rotatedMatrix[3][3] << std::endl;
+
+	auto scaledMatrix = clv::mth::scale(clv::mth::mat4f::identity(), clv::mth::vec3f{3.0f, 3.0f, 3.0f});
+	std::cout << "scaledMatrix[0][0]:" << scaledMatrix[0][0] << " scaledMatrix[1][0]:" << scaledMatrix[1][0] << " scaledMatrix[2][0]:" << scaledMatrix[2][0] << " scaledMatrix[3][0]:" << scaledMatrix[3][0] << std::endl;
+    std::cout << "scaledMatrix[0][1]:" << scaledMatrix[0][1] << " scaledMatrix[1][1]:" << scaledMatrix[1][1] << " scaledMatrix[2][1]:" << scaledMatrix[2][1] << " scaledMatrix[3][1]:" << scaledMatrix[3][1] << std::endl;
+    std::cout << "scaledMatrix[0][2]:" << scaledMatrix[0][2] << " scaledMatrix[1][2]:" << scaledMatrix[1][2] << " scaledMatrix[2][2]:" << scaledMatrix[2][2] << " scaledMatrix[3][2]:" << scaledMatrix[3][2] << std::endl;
+    std::cout << "scaledMatrix[0][3]:" << scaledMatrix[0][3] << " scaledMatrix[1][3]:" << scaledMatrix[1][3] << " scaledMatrix[2][3]:" << scaledMatrix[2][3] << " scaledMatrix[3][3]:" << scaledMatrix[3][3] << std::endl;
+
+	auto transformedMatrix = translatedMatrix * rotatedMatrix * scaledMatrix;
+	std::cout << "transformedMatrix[0][0]:" << transformedMatrix[0][0] << " transformedMatrix[1][0]:" << transformedMatrix[1][0] << " transformedMatrix[2][0]:" << transformedMatrix[2][0] << " transformedMatrix[3][0]:" << transformedMatrix[3][0] << std::endl;
+    std::cout << "transformedMatrix[0][1]:" << transformedMatrix[0][1] << " transformedMatrix[1][1]:" << transformedMatrix[1][1] << " transformedMatrix[2][1]:" << transformedMatrix[2][1] << " transformedMatrix[3][1]:" << transformedMatrix[3][1] << std::endl;
+    std::cout << "transformedMatrix[0][2]:" << transformedMatrix[0][2] << " transformedMatrix[1][2]:" << transformedMatrix[1][2] << " transformedMatrix[2][2]:" << transformedMatrix[2][2] << " transformedMatrix[3][2]:" << transformedMatrix[3][2] << std::endl;
+    std::cout << "transformedMatrix[0][3]:" << transformedMatrix[0][3] << " transformedMatrix[1][3]:" << transformedMatrix[1][3] << " transformedMatrix[2][3]:" << transformedMatrix[2][3] << " transformedMatrix[3][3]:" << transformedMatrix[3][3] << std::endl;
 	}
 
 
