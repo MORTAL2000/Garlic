@@ -12,7 +12,26 @@ namespace clv::mth{
 
 	template<typename T>
 	constexpr mat<4, 4, T> rotate(const mat<4, 4, T>& matrix, T angle, const vec<3, T>& vector) noexcept{
-		//TODO
+		mat<4, 4, T> xRotMat = mat<4, 4, T>::identity();
+		mat<4, 4, T> yRotMat = mat<4, 4, T>::identity();
+		mat<4, 4, T> zRotMat = mat<4, 4, T>::identity();
+
+		xRotMat[1][1] =  cos(angle) * vector.x;
+		xRotMat[2][1] = -sin(angle) * vector.x;
+		xRotMat[1][2] =  sin(angle) * vector.x;
+		xRotMat[2][2] =  cos(angle) * vector.x;
+
+		yRotMat[0][0] =  cos(angle) * vector.y;
+		yRotMat[0][2] =  sin(angle) * vector.y;
+		yRotMat[2][0] = -sin(angle) * vector.y;
+		yRotMat[2][2] =  cos(angle) * vector.y;
+
+		zRotMat[0][0] =  cos(angle) * vector.z;
+		zRotMat[0][1] = -sin(angle) * vector.z;
+		zRotMat[1][0] =  sin(angle) * vector.z;
+		zRotMat[1][1] =  cos(angle) * vector.z;
+
+		return matrix * (zRotMat * yRotMat * xRotMat);
 	}
 
 	template<typename T>
