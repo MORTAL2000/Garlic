@@ -22,6 +22,8 @@ namespace clv::mth{
 
 		T* ptr();
 
+		static constexpr mat<R, C, T> identity() noexcept;
+
 		constexpr auto& operator[](size_type index) noexcept;
 		constexpr const auto& operator[](size_type index) const noexcept;
 	};

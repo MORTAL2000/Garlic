@@ -13,6 +13,15 @@ namespace clv::mth{
 		return &(data[0][0]);
 	}
 
+	template<size_type R, size_type C, typename T>
+	constexpr mat<R, C, T> mat<R, C, T>::identity() noexcept{
+		mat<R, C, T> matrix;
+		for (size_type row = 0, col = 0; row < R && col < C; ++row, ++col){
+			matrix[row][col] = 1;
+		}
+		return matrix;
+	}
+
     template<size_type R, size_type C, typename T>
     constexpr auto& mat<R, C, T>::operator[](size_type index) noexcept{ 
 		return data[index];

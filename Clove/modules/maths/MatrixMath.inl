@@ -1,11 +1,7 @@
 namespace clv::mth{
 	template<typename T>
 	constexpr mat<4, 4, T> translate(const mat<4, 4, T>& matrix, const vec<3, T>& vector) noexcept{
-		constexpr mat<4, 4, T> translationMatrix;
-		translationMatrix[0][0] = 1;
-		translationMatrix[1][1] = 1;
-		translationMatrix[2][2] = 1;
-		translationMatrix[3][3] = 1;
+		constexpr mat<4, 4, T> translationMatrix = mat<4, 4, T>::identity();
 
 		translationMatrix[3][0] = vector.x;
 		translationMatrix[3][1] = vector.y;
