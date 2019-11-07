@@ -35,8 +35,14 @@ namespace clv::mth{
 	}
 
 	template<typename T>
-	constexpr mat<4, 4, T> scale(const mat<4, 4, T>& matrix, const vec<3, T>& vextor) noexcept{
-		//TODO
+	constexpr mat<4, 4, T> scale(const mat<4, 4, T>& matrix, const vec<3, T>& vector) noexcept{
+		mat<4, 4, T> scaleMat = mat<4, 4, T>::identity();
+
+		scaleMat[0][0] = vector.x;
+		scaleMat[1][1] = vector.y;
+		scaleMat[2][2] = vector.z;
+
+		return matrix * scaleMat;
 	}
 
 	template<size_type R, size_type C, typename T>
