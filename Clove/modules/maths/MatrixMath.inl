@@ -1,3 +1,5 @@
+#include "VectorMath.hpp"
+
 namespace clv::mth{
 	template<typename T>
 	constexpr mat<4, 4, T> translate(const mat<4, 4, T>& matrix, const vec<3, T>& vector) noexcept{
@@ -63,6 +65,28 @@ namespace clv::mth{
 
 	template<typename T>
 	constexpr mat<4, 4, T> lookAt(const vec<3, T>& eye, const vec<3, T>& center, const vec<3, T>& up) noexcept{
-		//TODO
+		mat<4, 4, T, Q> result = mat<4, 4, T, Q>::identity();
+
+		const vec<3, T, Q> forward = normalize(center - eye);
+		const vec<3, T, Q> side = normalize(cross(forward, up));
+		const vec<3, T, Q> lookUp = cross(side, forward);
+
+		result[0][0] = side.x;
+		result[1][0] = side.y;
+		result[2][0] = side.z;
+
+		result[0][1] = lookUp.x;
+		result[1][1] = lookUp.y;
+		result[2][1] = lookUp.z;
+
+		result[0][2] = -forward.x;
+		result[1][2] = -forward.y;
+		result[2][2] = -forward.z;
+
+		result[3][0] = -dot(side, eye);
+		result[3][1] = -dot(lookUp, eye);
+		result[3][2] =  dot(forward, eye);
+
+		return result;
 	}
 }
