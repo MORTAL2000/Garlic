@@ -11,21 +11,25 @@ int main(){
 
     clv::mth::mat<2, 2, float> matA;
     matA[0][0] = 1;
-    matA[0][1] = 2;
-    matA[1][0] = 3;
+    matA[1][0] = 2;
+    matA[0][1] = 3;
     matA[1][1] = 4;
 
     clv::mth::mat2f matB;
     matB[0][0] = 1;
-    matB[0][1] = 1;
     matB[1][0] = 1;
+    matB[0][1] = 1;
     matB[1][1] = 1;
 
-    std::cout << "matA[0][0]:" << matA[0][0] << " matA[0][1]:" << matA[0][1] << std::endl;
-    std::cout << "matA[1][0]:" << matA[1][0] << " matA[1][1]:" << matA[1][1] << std::endl;
+    std::cout << "matA[0][0]:" << matA[0][0] << " matA[1][0]:" << matA[1][0] << std::endl;
+    std::cout << "matA[0][1]:" << matA[0][1] << " matA[1][1]:" << matA[1][1] << std::endl;
 
-    std::cout << "matB[0][0]:" << matB[0][0] << " matB[0][1]:" << matB[0][1] << std::endl;
-    std::cout << "matB[1][0]:" << matB[1][0] << " matB[1][1]:" << matB[1][1] << std::endl;
+    auto matAT = clv::mth::transpose(matA);
+    std::cout << "matAT[0][0]:" << matAT[0][0] << " matAT[1][0]:" << matAT[1][0] << std::endl;
+    std::cout << "matAT[0][1]:" << matAT[0][1] << " matAT[1][1]:" << matAT[1][1] << std::endl;
+
+    std::cout << "matB[0][0]:" << matB[0][0] << " matB[1][0]:" << matB[1][0] << std::endl;
+    std::cout << "matB[0][1]:" << matB[0][1] << " matB[1][1]:" << matB[1][1] << std::endl;
 
     //Matrix<3, 2, float> matB;
 
@@ -64,7 +68,9 @@ int main(){
     std::cout << "transformedMatrix[0][1]:" << transformedMatrix[0][1] << " transformedMatrix[1][1]:" << transformedMatrix[1][1] << " transformedMatrix[2][1]:" << transformedMatrix[2][1] << " transformedMatrix[3][1]:" << transformedMatrix[3][1] << std::endl;
     std::cout << "transformedMatrix[0][2]:" << transformedMatrix[0][2] << " transformedMatrix[1][2]:" << transformedMatrix[1][2] << " transformedMatrix[2][2]:" << transformedMatrix[2][2] << " transformedMatrix[3][2]:" << transformedMatrix[3][2] << std::endl;
     std::cout << "transformedMatrix[0][3]:" << transformedMatrix[0][3] << " transformedMatrix[1][3]:" << transformedMatrix[1][3] << " transformedMatrix[2][3]:" << transformedMatrix[2][3] << " transformedMatrix[3][3]:" << transformedMatrix[3][3] << std::endl;
-	}
+	
+    
+    }
 
 
 	{
