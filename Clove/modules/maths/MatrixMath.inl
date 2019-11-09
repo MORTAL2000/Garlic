@@ -52,7 +52,13 @@ namespace clv::mth{
 
 	template<size_type R, size_type C, typename T>
 	constexpr mat<R, C, T> transpose(const mat<R, C, T>& matrix) noexcept{
-		//TODO
+		mat<R, C, T> transposed;
+		for(size_type row = 0; row < R; ++row){
+			for(size_type col = 0; col < C; ++col){
+				transposed[row][col] = matrix[col][row];
+			}
+		}
+		return transposed;
 	}
 
 	template<typename T>
