@@ -7,6 +7,8 @@ add_library(
 		Matrix.inl
 		MatrixMath.hpp
 		MatrixMath.inl
+		Quaternion.hpp
+		Quaternion.inl
 		Vector.hpp
 		Vector.inl
 		VectorMath.hpp
