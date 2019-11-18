@@ -1,6 +1,10 @@
 #pragma once
 
+#include "Vector.hpp"
+
 #include <cinttypes>
+
+//TODO: inl
 
 namespace clv::mth{
     template<typename T>
@@ -14,7 +18,12 @@ namespace clv::mth{
 
     	//FUNCTIONS
     public:
-
+		quat(const vec<3, T>& axis, T angle){
+			x = axis.x * sin(angle / 2);
+			y = axis.y * sin(angle / 2);
+			z = axis.z * sin(angle / 2);
+			w = cos(angle / 2);
+		}
     };
 
     using quati = quat<std::int32_t>;
