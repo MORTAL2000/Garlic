@@ -1,4 +1,4 @@
-Checks: 'modernize-*, diagnostic-*, analyzer-*, readability-*, performance-*'
+Checks: '-*, modernize-*, diagnostic-*, analyzer-*, readability-*, performance-*'
 
 CheckOptions:
   - { key: readability-identifier-naming.NamespaceCase,          value: lower_case }
