@@ -17,7 +17,7 @@ namespace tnc::ecs::_2D{
 		//FUNCTIONS
 	public:
 		SpriteComponent();
-		SpriteComponent(const std::shared_ptr<rnd::Sprite>& sprite);
+		SpriteComponent(std::shared_ptr<rnd::Sprite>  sprite);
 
 		SpriteComponent(const SpriteComponent& other);
 		SpriteComponent(SpriteComponent&& other) noexcept;

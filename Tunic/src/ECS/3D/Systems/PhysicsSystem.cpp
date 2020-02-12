@@ -76,8 +76,8 @@ namespace tnc::ecs::_3D{
 				const btCollisionObject* obA = manifold->getBody0();
 				const btCollisionObject* obB = manifold->getBody1();
 
-				RigidBodyComponent* bodyA = static_cast<RigidBodyComponent*>(obA->getUserPointer());
-				RigidBodyComponent* bodyB = static_cast<RigidBodyComponent*>(obB->getUserPointer());
+				auto* bodyA = static_cast<RigidBodyComponent*>(obA->getUserPointer());
+				auto* bodyB = static_cast<RigidBodyComponent*>(obB->getUserPointer());
 
 				bodyA->onBodyCollision.broadcast(bodyB);
 				bodyB->onBodyCollision.broadcast(bodyA);

@@ -45,7 +45,7 @@ namespace tnc::ecs::ui{
 		void setLocalPosition(const clv::mth::vec2f& position);
 
 		void setRotation(float rotation);
-		void setLocalRotation(float inLocalRotation);
+		void setLocalRotation(float rotation);
 
 		void setScale(const clv::mth::vec2f& scale);
 		void setLocalScale(const clv::mth::vec2f& scale);

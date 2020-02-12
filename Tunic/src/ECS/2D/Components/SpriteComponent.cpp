@@ -5,8 +5,8 @@
 namespace tnc::ecs::_2D{
 	SpriteComponent::SpriteComponent() = default;
 
-	SpriteComponent::SpriteComponent(const std::shared_ptr<rnd::Sprite>& sprite)
-		: sprite(sprite){
+	SpriteComponent::SpriteComponent(std::shared_ptr<rnd::Sprite>  sprite)
+		: sprite(std::move(sprite)){
 	}
 
 	SpriteComponent::SpriteComponent(const SpriteComponent& other) = default;

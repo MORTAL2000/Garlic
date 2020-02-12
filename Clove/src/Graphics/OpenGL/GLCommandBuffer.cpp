@@ -32,39 +32,39 @@ namespace clv::gfx::ogl{
 			glRenderTarget->clear();
 		};
 
-		commands.push_back(beginCommand);
+		commands.emplace_back(beginCommand);
 	}
 
 	void GLCommandBuffer::bindIndexBuffer(const Buffer& buffer){
 		const auto bindIBCommand = [&buffer](){
-			const GLBuffer& glbuffer = static_cast<const GLBuffer&>(buffer);
+			const auto& glbuffer = static_cast<const GLBuffer&>(buffer);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, glbuffer.getBufferID());
 		};
 
-		commands.push_back(bindIBCommand);
+		commands.emplace_back(bindIBCommand);
 	}
 
 	void GLCommandBuffer::bindVertexBuffer(const Buffer& buffer, const uint32_t stride){
 		const auto bindVBCommand = [&buffer, stride](){
-			const GLBuffer& glbuffer = static_cast<const GLBuffer&>(buffer);
+			const auto& glbuffer = static_cast<const GLBuffer&>(buffer);
 			glBindVertexBuffer(0, glbuffer.getBufferID(), 0, stride);
 		};
 
-		commands.push_back(bindVBCommand);
+		commands.emplace_back(bindVBCommand);
 	}
 
 	void GLCommandBuffer::bindShaderResourceBuffer(const Buffer& buffer, const ShaderStage shaderType, const uint32_t bindingPoint){
 		const auto bindSRBCommand = [&buffer, shaderType, bindingPoint](){
-			const GLBuffer& glbuffer = static_cast<const GLBuffer&>(buffer);
+			const auto& glbuffer = static_cast<const GLBuffer&>(buffer);
 			glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint, glbuffer.getBufferID());
 		};
 
-		commands.push_back(bindSRBCommand);
+		commands.emplace_back(bindSRBCommand);
 	}
 
 	void GLCommandBuffer::bindPipelineObject(const PipelineObject& pipelineObject){
 		const auto bindPOCommand = [&pipelineObject](){
-			const GLPipelineObject& glPipelineObject = static_cast<const GLPipelineObject&>(pipelineObject);
+			const auto& glPipelineObject = static_cast<const GLPipelineObject&>(pipelineObject);
 			glBindVertexArray(glPipelineObject.getGLVertexArrayID());
 			glUseProgram(glPipelineObject.getGLPorgramID());
 
@@ -80,19 +80,19 @@ namespace clv::gfx::ogl{
 			glEnable(GL_CULL_FACE);
 		};
 
-		commands.push_back(bindPOCommand);
+		commands.emplace_back(bindPOCommand);
 	}
 
 	void GLCommandBuffer::bindTexture(const Texture* texture, const uint32_t bindingPoint){
 		const auto bindTextureCommand = [texture, bindingPoint](){
-			if(const GLTexture* glTexture = static_cast<const GLTexture*>(texture)){
+			if(const auto* glTexture = static_cast<const GLTexture*>(texture)){
 				glBindTextureUnit(bindingPoint, glTexture->getTextureID());
 			} else{
 				glBindTextureUnit(bindingPoint, 0);
 			}
 		};
 
-		commands.push_back(bindTextureCommand);
+		commands.emplace_back(bindTextureCommand);
 	}
 
 	void GLCommandBuffer::setViewport(const Viewport& viewport){
@@ -100,7 +100,7 @@ namespace clv::gfx::ogl{
 			glViewport(static_cast<GLint>(viewport.x), static_cast<GLint>(viewport.y), static_cast<GLsizei>(viewport.width), static_cast<GLsizei>(viewport.height));
 		};
 
-		commands.push_back(setVPCommand);
+		commands.emplace_back(setVPCommand);
 	}
 
 	void GLCommandBuffer::setDepthEnabled(bool enabled){
@@ -114,7 +114,7 @@ namespace clv::gfx::ogl{
 			}
 		};
 
-		commands.push_back(setDECommand);
+		commands.emplace_back(setDECommand);
 	}
 
 	void GLCommandBuffer::drawIndexed(const uint32_t count){
@@ -122,7 +122,7 @@ namespace clv::gfx::ogl{
 			glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(count), GL_UNSIGNED_INT, nullptr);
 		};
 
-		commands.push_back(drawCommand);
+		commands.emplace_back(drawCommand);
 	}
 
 	void GLCommandBuffer::endEncoding(){

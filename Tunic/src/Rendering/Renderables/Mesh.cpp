@@ -9,7 +9,7 @@ using namespace clv;
 using namespace clv::gfx;
 
 namespace tnc::rnd{
-	Mesh::Mesh(std::string filePath, MaterialInstance materialInstance)
+	Mesh::Mesh(const std::string& filePath, MaterialInstance materialInstance)
 		: materialInstance(std::move(materialInstance))
 		, loadedBufferData(VertexLayout{}){//NOTE: initialising it like this is potentially dangerous
 		loader::MeshInfo info = loader::MeshLoader::loadOBJ(filePath);

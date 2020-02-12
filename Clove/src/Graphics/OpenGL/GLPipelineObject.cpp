@@ -16,7 +16,7 @@ namespace clv::gfx::ogl{
 	GLPipelineObject::~GLPipelineObject() = default;
 
 	void GLPipelineObject::setVertexShader(const Shader& vertexShader){
-		const GLShader& glShader = static_cast<const GLShader&>(vertexShader);
+		const auto& glShader = static_cast<const GLShader&>(vertexShader);
 		attachAndLinkShader(glShader.getShaderID());
 
 		vertexLayout.clear();
@@ -54,12 +54,12 @@ namespace clv::gfx::ogl{
 	}
 
 	void GLPipelineObject::setGeometryShader(const Shader& geometryShader){
-		const GLShader& glShader = static_cast<const GLShader&>(geometryShader);
+		const auto& glShader = static_cast<const GLShader&>(geometryShader);
 		attachAndLinkShader(glShader.getShaderID());
 	}
 
 	void GLPipelineObject::setPixelShader(const Shader& pixelShader){
-		const GLShader& glShader = static_cast<const GLShader&>(pixelShader);
+		const auto& glShader = static_cast<const GLShader&>(pixelShader);
 		attachAndLinkShader(glShader.getShaderID());
 	}
 

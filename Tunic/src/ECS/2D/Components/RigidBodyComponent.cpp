@@ -29,8 +29,8 @@ namespace tnc::ecs::_2D{
 		collisionShape = std::move(other.collisionShape);
 		body = std::move(other.body);
 
-		mass = std::move(other.mass);
-		isKinematic = std::move(other.isKinematic);
+		mass = other.mass;
+		isKinematic = other.isKinematic;
 	}
 
 	RigidBodyComponent& RigidBodyComponent::operator=(const RigidBodyComponent& other){
@@ -48,8 +48,8 @@ namespace tnc::ecs::_2D{
 		collisionShape = std::move(other.collisionShape);
 		body = std::move(other.body);
 
-		mass = std::move(other.mass);
-		isKinematic = std::move(other.isKinematic);
+		mass = other.mass;
+		isKinematic = other.isKinematic;
 
 		return *this;
 	}
@@ -72,7 +72,7 @@ namespace tnc::ecs::_2D{
 			collisionShape->calculateLocalInertia(mass, localInertia);
 		}
 
-		btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+		auto* myMotionState = new btDefaultMotionState(startTransform);
 		btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, collisionShape.get(), localInertia);
 
 		body = std::make_unique<btRigidBody>(rbInfo);

@@ -39,8 +39,8 @@ namespace tnc::ecs::_3D{
 	}
 
 	void CameraComponent::setProjectionMode(const ProjectionMode mode){
-		const float width = static_cast<float>(viewport.width);
-		const float height = static_cast<float>(viewport.height);
+		const auto width = static_cast<float>(viewport.width);
+		const auto height = static_cast<float>(viewport.height);
 
 		currentProjectionMode = mode;
 
