@@ -71,7 +71,7 @@ namespace tnc::ecs::_3D{
 			collisionShape->calculateLocalInertia(mass, localInertia);
 		}
 
-		auto* myMotionState = new btDefaultMotionState(startTransform);
+		btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
 		btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, collisionShape.get(), localInertia);
 
 		body = std::make_unique<btRigidBody>(rbInfo);

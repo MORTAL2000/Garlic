@@ -37,7 +37,7 @@ namespace clv::gfx::ogl{
 
 	void GLCommandBuffer::bindIndexBuffer(const Buffer& buffer){
 		const auto bindIBCommand = [&buffer](){
-			const auto& glbuffer = static_cast<const GLBuffer&>(buffer);
+			const GLBuffer& glbuffer = static_cast<const GLBuffer&>(buffer);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, glbuffer.getBufferID());
 		};
 
@@ -46,7 +46,7 @@ namespace clv::gfx::ogl{
 
 	void GLCommandBuffer::bindVertexBuffer(const Buffer& buffer, const uint32_t stride){
 		const auto bindVBCommand = [&buffer, stride](){
-			const auto& glbuffer = static_cast<const GLBuffer&>(buffer);
+			const GLBuffer& glbuffer = static_cast<const GLBuffer&>(buffer);
 			glBindVertexBuffer(0, glbuffer.getBufferID(), 0, stride);
 		};
 
@@ -55,7 +55,7 @@ namespace clv::gfx::ogl{
 
 	void GLCommandBuffer::bindShaderResourceBuffer(const Buffer& buffer, const ShaderStage shaderType, const uint32_t bindingPoint){
 		const auto bindSRBCommand = [&buffer, shaderType, bindingPoint](){
-			const auto& glbuffer = static_cast<const GLBuffer&>(buffer);
+			const GLBuffer& glbuffer = static_cast<const GLBuffer&>(buffer);
 			glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint, glbuffer.getBufferID());
 		};
 
@@ -64,7 +64,7 @@ namespace clv::gfx::ogl{
 
 	void GLCommandBuffer::bindPipelineObject(const PipelineObject& pipelineObject){
 		const auto bindPOCommand = [&pipelineObject](){
-			const auto& glPipelineObject = static_cast<const GLPipelineObject&>(pipelineObject);
+			const GLPipelineObject& glPipelineObject = static_cast<const GLPipelineObject&>(pipelineObject);
 			glBindVertexArray(glPipelineObject.getGLVertexArrayID());
 			glUseProgram(glPipelineObject.getGLPorgramID());
 
@@ -85,7 +85,7 @@ namespace clv::gfx::ogl{
 
 	void GLCommandBuffer::bindTexture(const Texture* texture, const uint32_t bindingPoint){
 		const auto bindTextureCommand = [texture, bindingPoint](){
-			if(const auto* glTexture = static_cast<const GLTexture*>(texture)){
+			if(const GLTexture* glTexture = static_cast<const GLTexture*>(texture)){
 				glBindTextureUnit(bindingPoint, glTexture->getTextureID());
 			} else{
 				glBindTextureUnit(bindingPoint, 0);

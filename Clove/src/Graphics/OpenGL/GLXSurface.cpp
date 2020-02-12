@@ -7,7 +7,7 @@
 
 namespace clv::gfx::ogl{
 	GLXSurface::GLXSurface(void* windowData){
-		auto* data = reinterpret_cast<plt::LinuxData*>(windowData);
+		plt::LinuxData* data = reinterpret_cast<plt::LinuxData*>(windowData);
 		display = data->display;
 		window = data->window;
 
@@ -19,14 +19,14 @@ namespace clv::gfx::ogl{
 		};
 
 		visual = glXChooseVisual(display, 0, glxAttribs);
-		if(visual == nullptr){
+		if(!visual){
 			//TODO: Exception
 			CLV_LOG_CRITICAL("Could not create visual");
 			return;
 		}
 
 		context = glXCreateContext(display, visual, nullptr, GL_TRUE);
-		if(context == nullptr){
+		if(!context){
 			//TODO:Exception
 			CLV_LOG_CRITICAL("Could not create context");
 			return;
@@ -48,7 +48,7 @@ namespace clv::gfx::ogl{
 	void GLXSurface::makeCurrent(){
 		glXMakeCurrent(display, *window, context);
 
-		if(glxSwapIntervalEXT == nullptr){
+		if(!glxSwapIntervalEXT){
 			const char* extensions = (char*)glXQueryExtensionsString(display, visual->screen);
 			if(strstr(extensions, "GLX_EXT_swap_control") != nullptr){
 				glxSwapIntervalEXT = (PFNGLXSWAPINTERVALEXTPROC)glXGetProcAddress((GLubyte*)"glxSwapIntervalEXT");
@@ -70,7 +70,7 @@ namespace clv::gfx::ogl{
 	}
 
 	void GLXSurface::setVSync(bool enabled){
-		if(glxSwapIntervalEXT != nullptr){
+		if(glxSwapIntervalEXT){
 			GLXDrawable drawable = glXGetCurrentDrawable();
 	
 			const int32_t interval = enabled ? 1 : 0;
@@ -83,7 +83,7 @@ namespace clv::gfx::ogl{
 	}
 
 	bool GLXSurface::isVsync() const{
-		if(glxSwapIntervalEXT != nullptr){
+		if(glxSwapIntervalEXT){
 			GLXDrawable drawable = glXGetCurrentDrawable();
 
 			uint32_t interval = 0;

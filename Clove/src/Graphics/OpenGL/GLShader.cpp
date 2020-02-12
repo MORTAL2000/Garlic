@@ -34,7 +34,7 @@ namespace clv::gfx::ogl{
 		if(result == GL_FALSE){
 			int32_t length;
 			glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &length);
-			auto* message = new char[length];
+			char* message = new char[length];
 			glGetShaderInfoLog(shaderID, length, &length, message);
 			CLV_LOG_ERROR("Failed to compile {0} shader! {1}", getStringFromShaderStage(stage), message);
 			delete[] message;

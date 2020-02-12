@@ -12,8 +12,8 @@ namespace clv::gfx::ogl{
 		CLV_ASSERT(colourTexture != nullptr || depthStencilTexture != nullptr, "{0}: Render target needs at least one valid texture", CLV_FUNCTION_NAME);
 
 		//Colour buffer
-		if(colourTexture != nullptr){
-			auto* glColourTexture = static_cast<GLTexture*>(colourTexture);
+		if(colourTexture){
+			GLTexture* glColourTexture = static_cast<GLTexture*>(colourTexture);
 			const TextureUsage usage = glColourTexture->getDescriptor().usage;
 			const GLuint textureRenderID = glColourTexture->getTextureID();
 
@@ -26,8 +26,8 @@ namespace clv::gfx::ogl{
 		}
 
 		//Depth / Stencil buffer
-		if(depthStencilTexture != nullptr){
-			auto* gldepthStencilTexture = static_cast<GLTexture*>(depthStencilTexture);
+		if(depthStencilTexture){
+			GLTexture* gldepthStencilTexture = static_cast<GLTexture*>(depthStencilTexture);
 			const TextureUsage usage = gldepthStencilTexture->getDescriptor().usage;
 			const TextureStyle style = gldepthStencilTexture->getDescriptor().style;
 			const GLuint textureRenderID = gldepthStencilTexture->getTextureID();

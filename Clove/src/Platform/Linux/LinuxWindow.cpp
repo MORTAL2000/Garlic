@@ -10,7 +10,7 @@ namespace clv::plt{
 
         display = XOpenDisplay(nullptr); //makes the connection to the client, where to display the window
 
-        if(display == nullptr){
+        if(!display){
             //TODO: Exception
             CLV_LOG_ERROR("Could not open display");
             return;

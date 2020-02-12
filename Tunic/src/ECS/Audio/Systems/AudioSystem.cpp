@@ -70,7 +70,7 @@ namespace tnc::ecs::aud{
 			return;
 		}
 		
-		if(component->stream == nullptr){
+		if(!component->stream){
 			component->playbackPosition = 0;
 
 			PaStreamParameters outputParameters;
@@ -116,7 +116,7 @@ namespace tnc::ecs::aud{
 	}
 
 	bool AudioSystem::isStreamActive(PaStream* stream){
-		if(stream == nullptr){
+		if(!stream){
 			return false;
 		}
 
@@ -126,8 +126,8 @@ namespace tnc::ecs::aud{
 	}
 
 	int AudioSystem::soundPlayback_Loop(const void* inputBuffer, void* outputBuffer, unsigned long frameCount, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void* userData){
-		auto* data = static_cast<AudioComponent*>(userData);
-		auto* out = static_cast<int32_t*>(outputBuffer);
+		AudioComponent* data = static_cast<AudioComponent*>(userData);
+		int32_t* out = static_cast<int32_t*>(outputBuffer);
 		int32_t* cursor = out;
 		int32_t currentFrameCount = frameCount;
 		int32_t frameCountToRead = 0;
@@ -156,8 +156,8 @@ namespace tnc::ecs::aud{
 	}
 	
 	int AudioSystem::soundPlayback_Once(const void* inputBuffer, void* outputBuffer, unsigned long frameCount, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void* userData){
-		auto* data = static_cast<AudioComponent*>(userData);
-		auto* out = static_cast<int32_t*>(outputBuffer);
+		AudioComponent* data = static_cast<AudioComponent*>(userData);
+		int32_t* out = static_cast<int32_t*>(outputBuffer);
 		int32_t* cursor = out;
 		int32_t currentFrameCount = frameCount;
 		int32_t frameCountToRead = 0;

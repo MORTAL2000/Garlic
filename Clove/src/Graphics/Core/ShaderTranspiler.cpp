@@ -51,7 +51,7 @@ namespace clv::gfx::ShaderTranspiler{
 		shader.setStrings(&strs, 1);
 
 		TBuiltInResource builtInResources = glslang::DefaultTBuiltInResource;
-		auto messages = static_cast<EShMessages>(
+		EShMessages messages = static_cast<EShMessages>(
 			EShMsgSpvRules |
 			EShMsgReadHlsl | EShMsgHlslOffsets | EShMsgHlslLegalization |
 			EShMsgKeepUncalled | EShMsgSuppressWarnings);

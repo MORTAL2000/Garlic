@@ -18,7 +18,7 @@ namespace tnc::ecs::_2D{
 		parent = other.parent;
 		//Not copying children for now, transform component has no knowledge of other components
 
-		if(parent != nullptr){
+		if(parent){
 			parent->children.push_back(this);
 		}
 	}
@@ -33,7 +33,7 @@ namespace tnc::ecs::_2D{
 		parent = other.parent;
 		//Not copying children for now, transform component has no knowledge of other components
 
-		if(parent != nullptr){
+		if(parent){
 			parent->children.push_back(this);
 		}
 
@@ -43,7 +43,7 @@ namespace tnc::ecs::_2D{
 	TransformComponent& TransformComponent::operator=(TransformComponent&& other) noexcept = default;
 
 	TransformComponent::~TransformComponent(){
-		if(parent != nullptr){
+		if(parent){
 			removeItemFromVector(this, parent->children);
 		}
 
@@ -104,7 +104,7 @@ namespace tnc::ecs::_2D{
 	}
 
 	void TransformComponent::setPosition(const mth::vec2f& position){
-		if(parent != nullptr){
+		if(parent){
 			setLocalPosition(position - parent->getPosition());
 		} else{
 			setLocalPosition(position);
@@ -116,7 +116,7 @@ namespace tnc::ecs::_2D{
 	}
 
 	void TransformComponent::setRotation(float rotation){
-		if(parent != nullptr){
+		if(parent){
 			setLocalRotation(rotation - parent->getRotation());
 		} else{
 			setLocalRotation(rotation);
@@ -128,7 +128,7 @@ namespace tnc::ecs::_2D{
 	}
 
 	void TransformComponent::setScale(const mth::vec2f& scale){
-		if(parent != nullptr){
+		if(parent){
 			setLocalScale(scale / parent->getScale());
 		} else{
 			setLocalScale(scale);
@@ -144,9 +144,9 @@ namespace tnc::ecs::_2D{
 	}
 
 	void TransformComponent::addChild(TransformComponent* child){
-		if((child != nullptr) && child != this){
+		if(child && child != this){
 			children.push_back(child);
-			if(child->parent != nullptr){
+			if(child->parent){
 				removeItemFromVector(child, child->parent->children);
 			}
 			child->parent = this;
@@ -154,7 +154,7 @@ namespace tnc::ecs::_2D{
 	}
 
 	mth::mat4f TransformComponent::getWorldTransformMatrix() const{
-		if(parent != nullptr){
+		if(parent){
 			return parent->getWorldTransformMatrix() * getLocalTransformMatrix();
 		} else{
 			return getLocalTransformMatrix();

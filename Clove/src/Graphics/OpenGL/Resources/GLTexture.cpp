@@ -13,7 +13,7 @@ namespace clv::gfx::ogl{
 
 		createTexture(this->descriptor, localBuffer);
 
-		if(localBuffer != nullptr){
+		if(localBuffer){
 			stbi_image_free(localBuffer);
 		}
 	}
@@ -72,8 +72,8 @@ namespace clv::gfx::ogl{
 	}
 
 	void GLTexture::createDefaultTexture(const GLenum target, const TextureUsage usage, const void* pixels){
-		auto width = static_cast<GLsizei>(descriptor.dimensions.x);
-		auto height = static_cast<GLsizei>(descriptor.dimensions.y);
+		GLsizei width = static_cast<GLsizei>(descriptor.dimensions.x);
+		GLsizei height = static_cast<GLsizei>(descriptor.dimensions.y);
 		
 		const GLenum internalFormat = getInternalFormat(usage);
 		const GLenum format = getFormat(usage);
@@ -96,8 +96,8 @@ namespace clv::gfx::ogl{
 	}
 
 	void GLTexture::createCubemapTexture(const TextureUsage usage, const void* pixels){
-		auto width = static_cast<GLsizei>(descriptor.dimensions.x);
-		auto height = static_cast<GLsizei>(descriptor.dimensions.y);
+		GLsizei width = static_cast<GLsizei>(descriptor.dimensions.x);
+		GLsizei height = static_cast<GLsizei>(descriptor.dimensions.y);
 
 		const GLenum internalFormat = getInternalFormat(usage);
 		const GLenum format = getFormat(usage);
