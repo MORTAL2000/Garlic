@@ -24,12 +24,10 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 #Clove
 add_subdirectory(Clove)
-set_target_properties(Clove PROPERTIES CXX_CLANG_TIDY clang-tidy)
 
 #Tunic
 if(GAR_BUILD_TUNIC)
 	add_subdirectory(Tunic)
-	set_target_properties(Tunic PROPERTIES CXX_CLANG_TIDY clang-tidy)
 endif()
 
 #Builb
