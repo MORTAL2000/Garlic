@@ -2,6 +2,8 @@
 
 #include "Clove/Graphics/Core/GraphicsFactory.hpp"
 
+#import <MetalKit/MetalKit.h>
+
 namespace clv::gfx::mtl{
 	class MTLGraphicsFactory : public GraphicsFactory{
 		//VARIABLES
@@ -21,8 +23,7 @@ namespace clv::gfx::mtl{
 		
 		virtual ~MTLGraphicsFactory();
 		
-		virtual std::shared_ptr<CommandBuffer> createCommandBuffer(const std::shared_ptr<RenderTarget>& renderTarget) override;
-		virtual std::shared_ptr<CommandBuffer> createCommandBuffer(Surface& surface) override;
+		virtual std::shared_ptr<CommandBuffer> createCommandBuffer() override;
 
 		virtual std::shared_ptr<Buffer> createBuffer(const BufferDescriptor& descriptor, const void* data) override;
 

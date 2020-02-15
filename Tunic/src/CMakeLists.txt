@@ -17,9 +17,9 @@ set(
 		${TNC_INCLUDE}/ECS/Core/Entity.hpp
 		${TNC_INCLUDE}/ECS/Core/Entity.inl
 		${TNC_SOURCE}/ECS/Core/Entity.cpp
-		${TNC_INCLUDE}/ECS/Core/Manager.hpp
-		${TNC_INCLUDE}/ECS/Core/Manager.inl
-		${TNC_SOURCE}/ECS/Core/Manager.cpp
+		${TNC_INCLUDE}/ECS/Core/World.hpp
+		${TNC_INCLUDE}/ECS/Core/World.inl
+		${TNC_SOURCE}/ECS/Core/World.cpp
 		${TNC_INCLUDE}/ECS/Core/System.hpp
 		${TNC_INCLUDE}/ECS/2D/Components/RigidBodyComponent.hpp
 		${TNC_SOURCE}/ECS/2D/Components/RigidBodyComponent.cpp
@@ -64,9 +64,13 @@ set(
 		${TNC_SOURCE}/Rendering/Material.cpp
 		${TNC_INCLUDE}/Rendering/MaterialInstance.hpp
 		${TNC_INCLUDE}/Rendering/MaterialInstance.inl
+		${TNC_SOURCE}/Rendering/MaterialInstance.cpp
 		${TNC_INCLUDE}/Rendering/RenderingConstants.hpp
 		${TNC_INCLUDE}/Rendering/ShaderBufferTypes.hpp
-		${TNC_SOURCE}/Rendering/MaterialInstance.cpp
+		${TNC_INCLUDE}/Rendering/Renderer.hpp
+		${TNC_SOURCE}/Rendering/Renderer.cpp
+		${TNC_INCLUDE}/Rendering/Renderer2D.hpp
+		${TNC_SOURCE}/Rendering/Renderer2D.cpp
 		${TNC_INCLUDE}/Rendering/Renderables/Font.hpp
 		${TNC_SOURCE}/Rendering/Renderables/Font.cpp
 		${TNC_INCLUDE}/Rendering/Renderables/Mesh.hpp

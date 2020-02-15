@@ -1,6 +1,6 @@
 #include "Tunic/ECS/3D/Systems/PhysicsSystem.hpp"
 
-#include "Tunic/ECS/Core/Manager.hpp"
+#include "Tunic/ECS/Core/World.hpp"
 #include "Tunic/ECS/3D/Components/TransformComponent.hpp"
 #include "Tunic/ECS/3D/Components/RigidBodyComponent.hpp"
 
@@ -31,7 +31,7 @@ namespace tnc::ecs::_3D{
 		delete collisionConfiguration;
 	}
 
-	void PhysicsSystem::update(utl::DeltaTime deltaTime){
+	void PhysicsSystem::update(World& world, utl::DeltaTime deltaTime){
 		CLV_PROFILE_FUNCTION();
 
 		using ComponentTuple = std::tuple<TransformComponent*, RigidBodyComponent*>;
@@ -62,7 +62,7 @@ namespace tnc::ecs::_3D{
 			transform->setRotation({ rot.getW(), rot.getX(), rot.getY(), rot.getZ() }); //GLM is pitch yaw roll while Bullet is yaw pitch roll
 		};
 
-		auto componentTuples = manager->getComponentSets<TransformComponent, RigidBodyComponent>();
+		auto componentTuples = world.getComponentSets<TransformComponent, RigidBodyComponent>();
 
 		std::for_each(componentTuples.begin(), componentTuples.end(), updateRigidBody);
 		dynamicsWorld->stepSimulation(deltaTime.getDeltaSeconds());

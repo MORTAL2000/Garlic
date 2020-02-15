@@ -2,6 +2,8 @@
 
 #include "Clove/Graphics/Core/RenderTarget.hpp"
 
+#import <MetalKit/MetalKit.h>
+
 namespace clv::gfx{
 	class Texture;
 }
@@ -25,6 +27,8 @@ namespace clv::gfx::mtl{
 		MTLRenderTarget& operator=(MTLRenderTarget&& other) noexcept;
 		
 		virtual ~MTLRenderTarget();
+
+		virtual void clear() override{}
 		
 		virtual void setClearColour(const mth::vec4f& colour);
 		

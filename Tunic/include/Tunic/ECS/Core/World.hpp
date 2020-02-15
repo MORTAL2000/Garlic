@@ -13,7 +13,7 @@ namespace tnc::ecs{
 }
 
 namespace tnc::ecs{
-	class Manager{
+	class World{
 		//VARIABLES
 	private:
 		ComponentManager componentManager;
@@ -27,15 +27,15 @@ namespace tnc::ecs{
 
 		//FUNCTIONS
 	public:
-		Manager();
+		World();
 
-		Manager(const Manager& other) = delete;
-		Manager(Manager&& other) noexcept = delete;
+		World(const World& other) = delete;
+		World(World&& other) noexcept = delete;
 
-		Manager& operator=(const Manager& other) = delete;
-		Manager& operator=(Manager&& other) noexcept = delete;
+		World& operator=(const World& other) = delete;
+		World& operator=(World&& other) noexcept = delete;
 
-		~Manager();
+		~World();
 
 		void update(clv::utl::DeltaTime deltaTime);
 
@@ -54,8 +54,8 @@ namespace tnc::ecs{
 		template<typename ...ComponentTypes>
 		std::vector<std::tuple<std::add_pointer_t<ComponentTypes>...>> getComponentSets();
 
-		template<typename SystemType>
-		void addSystem();
+		template<typename SystemType, typename ...ConstructArgs>
+		void addSystem(ConstructArgs&& ...args);
 
 	private:
 		void onComponentAdded(ComponentInterface* component);
@@ -70,4 +70,4 @@ namespace tnc::ecs{
 	};
 }
 
-#include "Manager.inl"
+#include "World.inl"
